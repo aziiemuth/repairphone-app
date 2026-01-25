@@ -17,6 +17,11 @@ export const metadata = {
     description: 'Layanan perbaikan software handphone dan laptop terpercaya.',
     type: 'website',
   },
+  icons: {
+    icon: '/repair.svg',
+    shortcut: '/repair.svg',
+    apple: '/repair.svg',
+  },
 };
 
 export default function RootLayout({ children }) {
