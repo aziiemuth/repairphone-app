@@ -12,6 +12,10 @@ const Section = styled.section`
   background: ${({ theme }) => theme.colors.gradient};
   position: relative;
   overflow: hidden;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 2rem 0;
+  }
 `;
 
 const StatsGrid = styled.div`

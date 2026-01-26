@@ -9,6 +9,10 @@ import ScrollAnimation from './ui/ScrollAnimation';
 const Section = styled.section`
   padding: 6rem 0;
   background: ${({ theme }) => theme.colors.background};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 3rem 0;
+  }
 `;
 
 const FeaturesGrid = styled.div`

@@ -16,6 +16,10 @@ import ScrollAnimation from './ui/ScrollAnimation';
 const Section = styled.section`
   padding: 6rem 0;
   background: ${({ theme }) => theme.colors.backgroundAlt};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 3rem 0;
+  }
 `;
 
 const ServicesGrid = styled.div`
