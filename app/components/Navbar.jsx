@@ -294,7 +294,7 @@ export default function Navbar() {
           <NavContainer>
             <Logo href="#">
               <DeviceMobile size={28} weight="duotone" />
-              Software Fix
+              Athif Software
             </Logo>
 
             <NavLinks>

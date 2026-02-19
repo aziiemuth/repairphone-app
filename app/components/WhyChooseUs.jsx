@@ -98,8 +98,8 @@ export default function WhyChooseUs() {
       <Container>
         <ScrollAnimation animation="fadeInUp">
           <SectionTitle
-            title="Kenapa Pilih Kami?"
-            subtitle="Kami hadir untuk memberikan layanan perbaikan software terbaik dengan harga terjangkau."
+            title="Kenapa Pilih Athif Software Solutions?"
+            subtitle="Jasa perbaikan software HP dan laptop terpercaya di Banyuwangi dengan harga terjangkau dan layanan 24 jam."
           />
         </ScrollAnimation>
         <FeaturesGrid>

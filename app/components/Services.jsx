@@ -94,32 +94,32 @@ var services = [
   {
     Icon: DeviceMobile,
     title: 'Perbaikan Software HP',
-    desc: 'Spesialis Android & iOS. Bootloop, stuck logo, error system, semua bisa ditangani dengan cepat.',
+    desc: 'Spesialis perbaikan software HP di Banyuwangi. Android & iOS — bootloop, stuck logo, error system, semua bisa ditangani dengan cepat dan profesional.',
   },
   {
     Icon: Laptop,
     title: 'Perbaikan Software Laptop',
-    desc: 'Windows & Linux. Blue screen, corrupted system, laptop lemot, kami siap bantu.',
+    desc: 'Jasa perbaikan software laptop di Banyuwangi. Windows & Linux — blue screen, corrupted system, laptop lemot, kami siap bantu sampai tuntas.',
   },
   {
     Icon: DownloadSimple,
     title: 'Install Ulang OS',
-    desc: 'Instalasi fresh Windows, Linux, macOS, Android, atau iOS dengan driver lengkap.',
+    desc: 'Layanan install ulang OS di Banyuwangi. Fresh install Windows, Linux, macOS, Android, atau iOS dengan driver lengkap dan aktivasi resmi.',
   },
   {
     Icon: LockKeyOpen,
-    title: 'Unlock & Bypass',
-    desc: 'Bypass FRP Google, iCloud, pattern lock, dan berbagai proteksi software lainnya.',
+    title: 'Unlock & Bypass FRP',
+    desc: 'Jasa unlock HP dan bypass FRP di Banyuwangi. Bypass Google, iCloud, pattern lock, dan berbagai proteksi software lainnya dengan aman.',
   },
   {
     Icon: Lightning,
-    title: 'Flash & Firmware',
-    desc: 'Update, downgrade, atau flash ulang firmware untuk performa optimal device.',
+    title: 'Flashing HP & Firmware',
+    desc: 'Jasa flashing HP di Banyuwangi — update, downgrade, atau flash ulang firmware Android & iPhone untuk performa optimal device Anda.',
   },
   {
     Icon: GearSix,
     title: 'Optimasi & Troubleshoot',
-    desc: 'Device lemot atau error? Kami optimasi dan troubleshoot sampai device kembali normal.',
+    desc: 'Device lemot atau error? Kami optimasi dan troubleshoot HP & laptop di Banyuwangi sampai device kembali normal dan lancar.',
   },
 ];
 
@@ -129,8 +129,8 @@ export default function Services() {
       <Container>
         <ScrollAnimation animation="fadeInUp">
           <SectionTitle
-            title="Layanan Kami"
-            subtitle="Spesialis perbaikan software handphone dan laptop. Fokus software only, bukan hardware."
+            title="Layanan Perbaikan Software di Banyuwangi"
+            subtitle="Athif Software Solutions — Spesialis flashing HP, perbaikan software handphone dan laptop di Banyuwangi. Fokus software only, bukan hardware."
           />
         </ScrollAnimation>
         <ServicesGrid>

@@ -95,10 +95,10 @@ export default function CTA() {
       <Container>
         <CTAContent>
           <ScrollAnimation animation="scaleIn">
-            <CTATitle>Butuh Bantuan Sekarang?</CTATitle>
+            <CTATitle>Butuh Flashing HP atau Perbaikan Software di Banyuwangi?</CTATitle>
             <CTAText>
               Jangan biarkan masalah software mengganggu aktivitas kamu.
-              Konsultasi gratis, respon cepat 24 jam!
+              Athif Software Solutions siap membantu — konsultasi gratis, respon cepat 24 jam!
             </CTAText>
           </ScrollAnimation>
           <CTAButton href={whatsappUrl} target="_blank" rel="noopener noreferrer">

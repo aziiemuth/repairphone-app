@@ -80,28 +80,36 @@ const Answer = styled.div`
 
 const faqs = [
   {
+    question: "Dimana lokasi Athif Software Solutions di Banyuwangi?",
+    answer: "Athif Software Solutions berlokasi di Banyuwangi, Jawa Timur. Kami melayani perbaikan software HP dan laptop untuk seluruh area Banyuwangi dan sekitarnya. Hubungi kami via WhatsApp untuk informasi lokasi detail."
+  },
+  {
+    question: "Apakah melayani flashing HP di Banyuwangi?",
+    answer: "Ya! Kami adalah spesialis jasa flashing HP di Banyuwangi. Layanan flashing meliputi update firmware, downgrade, flash ulang ROM, perbaikan bootloop, dan stuck logo untuk semua merek HP Android maupun iPhone."
+  },
+  {
+    question: "Berapa biaya perbaikan software HP di Banyuwangi?",
+    answer: "Biaya perbaikan software HP di Banyuwangi tergantung jenis kerusakan. Kami akan melakukan diagnosa terlebih dahulu, lalu memberitahu estimasi biaya yang transparan. Tidak ada biaya tersembunyi. Hubungi WhatsApp untuk konsultasi gratis!"
+  },
+  {
     question: "Apakah data saya aman?",
-    answer: "Ya, keamanan data adalah prioritas kami. Kami tidak akan mengakses file pribadi Anda, kecuali diperlukan untuk backup data (dengan izin Anda). Semua privasi terjaga."
+    answer: "Ya, keamanan data adalah prioritas utama Athif Software Solutions. Kami tidak akan mengakses file pribadi Anda, kecuali diperlukan untuk backup data (dengan izin Anda). Semua privasi pelanggan di Banyuwangi terjaga."
   },
   {
     question: "Berapa lama proses perbaikan?",
-    answer: "Untuk perbaikan software ringan bisa ditunggu (1-2 jam). Untuk kasus berat atau butuh install ulang kompleks, estimasi 1-2 hari kerja."
+    answer: "Untuk perbaikan software ringan seperti flashing HP bisa ditunggu (1-2 jam). Untuk kasus berat seperti install ulang kompleks atau recovery data, estimasi 1-2 hari kerja."
   },
   {
-    question: "Apakah ada garansi?",
-    answer: "Tentu! Kami memberikan garansi servis software selama 30 hari. Jika masalah yang sama muncul kembali, kami perbaiki GRATIS."
+    question: "Apakah ada garansi servis?",
+    answer: "Tentu! Athif Software Solutions memberikan garansi servis software selama 30 hari. Jika masalah yang sama muncul kembali, kami perbaiki GRATIS. Kepuasan pelanggan di Banyuwangi adalah prioritas kami."
   },
   {
     question: "Bisa perbaikan panggilan ke rumah?",
-    answer: "Saat ini kami fokus pada layanan di workshop untuk hasil maksimal dengan peralatan lengkap. Namun, kami menerima konsultasi via WhatsApp dulu."
+    answer: "Saat ini kami fokus pada layanan di workshop kami di Banyuwangi untuk hasil maksimal dengan peralatan lengkap. Namun, kami menerima konsultasi via WhatsApp terlebih dahulu sebelum datang."
   },
   {
-    question: "Harganya berapa?",
-    answer: "Biaya tergantung jenis kerusakan. Kami akan melakukan diagnosa dulu, lalu memberitahu estimasi biaya. Tidak ada biaya tersembunyi."
-  },
-  {
-    question: "Software apa saja yang bisa?",
-    answer: "Kami menangani Windows, MacOS, Android, dan iOS. Mulai dari install ulang, penghapusan virus, recovery data, hingga setting jaringan."
+    question: "Software apa saja yang bisa diperbaiki?",
+    answer: "Kami menangani Windows, MacOS, Android, dan iOS. Mulai dari install ulang, flashing firmware, penghapusan virus, recovery data, bypass FRP, unlock, hingga optimasi performa device di Banyuwangi."
   }
 ];
 

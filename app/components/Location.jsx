@@ -99,8 +99,8 @@ export default function Location() {
       <Container>
         <ScrollAnimation animation="fadeInUp">
           <SectionTitle
-            title="Lokasi Kami"
-            subtitle="Temukan kami dengan mudah melalui Google Maps."
+            title="Lokasi Athif Software Solutions"
+            subtitle="Temukan jasa flashing HP dan perbaikan software terpercaya di Banyuwangi."
           />
         </ScrollAnimation>
         <LocationGrid>
@@ -110,7 +110,7 @@ export default function Location() {
                 src={MAP_URL}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Lokasi SoftwareFix"
+                title="Lokasi Athif Software Solutions - Jasa Flashing HP dan Perbaikan Software Banyuwangi"
               />
             </MapWrapper>
           </ScrollAnimation>
@@ -123,7 +123,9 @@ export default function Location() {
                 <InfoContent>
                   <InfoTitle>Alamat</InfoTitle>
                   <InfoText>
-                    Koordinat: <strong>{COORDINATES}</strong>
+                    <strong>Athif Software Solutions</strong>
+                    <br />
+                    Banyuwangi, Jawa Timur, Indonesia
                     <br />
                     Layanan juga tersedia secara remote/online.
                   </InfoText>

@@ -216,16 +216,19 @@ export default function Hero() {
           <HeroText>
             <Badge>
               <Sparkle size={16} weight="duotone" />
-              Layanan 24 Jam Non-Stop
+              #1 Jasa Perbaikan Software di Banyuwangi
             </Badge>
             <Title>
-              Solusi Perbaikan <GradientText>Software</GradientText>
+              Solusi <GradientText>Flashing HP</GradientText>
               <br />
-              <TypeWriter /> Terpercaya
+              & Perbaikan Software
+              <br />
+              <TypeWriter /> di Banyuwangi
             </Title>
             <Subtitle>
-              Spesialis perbaikan software handphone dan laptop. Install ulang, 
-              unlock, flash, optimasi, dan troubleshooting. Tanpa ribet, langsung jadi!
+              Athif Software Solutions — Spesialis flashing HP dan perbaikan software handphone 
+              & laptop di Banyuwangi. Install ulang, unlock, bypass FRP, flash firmware, 
+              optimasi, dan troubleshooting. Layanan 24 jam nonstop, tanpa ribet, langsung jadi!
             </Subtitle>
             <ButtonGroup>
               <Button 
@@ -246,7 +249,7 @@ export default function Hero() {
             <Features>
               <Feature>
                 <Clock size={20} weight="duotone" />
-                Respon Cepat
+                Respon Cepat 24 Jam
               </Feature>
               <Feature>
                 <ShieldCheck size={20} weight="duotone" />

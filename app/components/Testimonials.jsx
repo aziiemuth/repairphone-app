@@ -163,27 +163,27 @@ const Dot = styled.button`
 
 var testimonials = [
   {
-    text: 'HP saya bootloop parah, udah pasrah mau beli baru. Ternyata di sini bisa diperbaiki dalam hitungan jam! Mantap banget, harga juga terjangkau.',
+    text: 'HP saya bootloop parah, udah pasrah mau beli baru. Ternyata di Athif Software Solutions Banyuwangi bisa diperbaiki dalam hitungan jam! Mantap banget, harga juga terjangkau.',
     name: 'Budi Santoso',
-    title: 'Pengusaha UMKM',
+    title: 'Pengusaha UMKM, Banyuwangi',
     rating: 5,
   },
   {
-    text: 'Laptop saya blue screen terus, kerja jadi terhambat. Service di sini cepat banget, sekarang laptop udah normal lagi. Recommended!',
+    text: 'Laptop saya blue screen terus, kerja jadi terhambat. Service di Athif Software Solutions cepat banget, sekarang laptop udah normal lagi. Recommended banget buat warga Banyuwangi!',
     name: 'Sarah Putri',
-    title: 'Content Creator',
+    title: 'Content Creator, Banyuwangi',
     rating: 5,
   },
   {
-    text: 'Pelayanan 24 jam beneran! Tengah malam HP error, langsung direspon dan diperbaiki. Luar biasa!',
+    text: 'Pelayanan 24 jam beneran! Tengah malam HP error, langsung direspon dan di-flash. Layanan flashing HP terbaik di Banyuwangi!',
     name: 'Ahmad Rizki',
-    title: 'Mahasiswa',
+    title: 'Mahasiswa, Banyuwangi',
     rating: 5,
   },
   {
-    text: 'iPhone saya Terkunci iCloud, sekarang bisa diakses lagi. Teknisinya profesional banget.',
+    text: 'iPhone saya terkunci iCloud, dibawa ke Athif Software Solutions langsung bisa diakses lagi. Teknisinya profesional, perbaikan software terlengkap di Banyuwangi.',
     name: 'Maya Dewi',
-    title: 'Marketing Manager',
+    title: 'Marketing Manager, Banyuwangi',
     rating: 5,
   },
 ];

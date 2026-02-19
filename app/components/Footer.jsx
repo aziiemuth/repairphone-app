@@ -134,12 +134,12 @@ export default function Footer() {
             <FooterBrand>
               <Logo>
                 <DeviceMobile size={24} weight="duotone" />
-                Software Fix
+                Athif Software Solutions
               </Logo>
               <FooterDesc>
-                Layanan perbaikan software handphone dan laptop terpercaya.
-                Spesialis install ulang, unlock, flash, optimasi, dan troubleshooting.
-                Software only, bukan hardware!
+                Athif Software Solutions — Jasa perbaikan software HP dan laptop terpercaya di Banyuwangi.
+                Spesialis flashing HP, install ulang, unlock, bypass FRP, flash firmware, optimasi, dan troubleshooting.
+                Melayani seluruh area Banyuwangi dan sekitarnya. Software only, bukan hardware!
               </FooterDesc>
               <SocialLinks>
                 <SocialLink 
@@ -182,7 +182,7 @@ export default function Footer() {
 
         <FooterBottom>
           <Copyright>
-            © {currentYear} Software Fix. Made with <Heart size={14} weight="fill" /> in Banyuwangi.
+            © {currentYear} Athif Software Solutions. Made with <Heart size={14} weight="fill" /> in Banyuwangi.
           </Copyright>
         </FooterBottom>
       </Container>
