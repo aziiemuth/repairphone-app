@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://repair.aziiemuth.my.id/sitemap.xml
