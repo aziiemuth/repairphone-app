@@ -12,18 +12,20 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     scroll-behavior: smooth;
+    font-size: 16px;
   }
 
   body {
     font-family: ${theme.fonts.primary};
     font-size: ${theme.fontSizes.base};
     line-height: 1.6;
-    background: ${({ theme }) => theme.colors.backgroundGradient || theme.colors.background};
+    background: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.text};
-    transition: background ${theme.transitions.normal}, color ${theme.transitions.normal};
+    transition: background 0.4s ease, color 0.4s ease;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
+    overflow-x: hidden;
   }
 
   a {
@@ -44,13 +46,21 @@ const GlobalStyles = createGlobalStyle`
     outline: none;
   }
 
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.primary};
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
   ul, ol {
     list-style: none;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-weight: ${theme.fontWeights.bold};
-    line-height: 1.2;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
   }
 
   ::selection {
@@ -58,9 +68,9 @@ const GlobalStyles = createGlobalStyle`
     color: white;
   }
 
-  /* Scrollbar styling */
+  /* Premium scrollbar */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
 
   ::-webkit-scrollbar-track {
@@ -69,72 +79,87 @@ const GlobalStyles = createGlobalStyle`
 
   ::-webkit-scrollbar-thumb {
     background: ${({ theme }) => theme.colors.primary};
-    border-radius: 5px;
+    border-radius: 9999px;
+    border: 2px solid ${({ theme }) => theme.colors.backgroundAlt};
   }
 
   ::-webkit-scrollbar-thumb:hover {
     background: ${({ theme }) => theme.colors.primaryHover};
   }
 
-  /* Animation keyframes */
+  /* Global keyframes */
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(32px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-32px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(32px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
   }
 
   @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.05);
-    }
-  }
-
-  @keyframes bounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
   }
 
   @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-5px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes rotateClock {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes bounceIn {
+    0% { opacity: 0; transform: scale(0.3); }
+    50% { transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes ripple {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
+  }
+
+  @keyframes particleFloat {
+    0% { transform: translateY(0) translateX(0); opacity: 0.6; }
+    50% { transform: translateY(-20px) translateX(10px); opacity: 1; }
+    100% { transform: translateY(-40px) translateX(-5px); opacity: 0; }
   }
 `;
 

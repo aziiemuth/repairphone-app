@@ -12,6 +12,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -22,6 +23,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 a {
@@ -31,4 +33,10 @@ a {
 
 button {
   font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }

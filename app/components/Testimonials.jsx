@@ -1,74 +1,100 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import styled, { keyframes, css } from 'styled-components';
 import { Star, CaretLeft, CaretRight, Quotes } from '@phosphor-icons/react';
 import Container from './ui/Container';
 import SectionTitle from './ui/SectionTitle';
 import ScrollAnimation from './ui/ScrollAnimation';
 
+const fadeSlide = keyframes`
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
+
 const Section = styled.section`
-  padding: 6rem 0;
-  background: ${({ theme }) => theme.colors.background};
+  padding: 7rem 0;
+  background: ${({ theme }) => theme.colors.backgroundAlt};
+  position: relative;
   overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -200px;
+    left: -200px;
+    width: 500px;
+    height: 500px;
+    background: ${({ theme }) => theme.colors.secondaryLight};
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
 `;
 
 const TestimonialWrapper = styled.div`
-  position: relative;
-  max-width: 800px;
+  max-width: 820px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 `;
 
-const TestimonialCard = styled.div`
+const Card = styled.div`
   background: ${({ theme }) => theme.colors.surface};
   border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: ${({ theme }) => theme.borderRadius.xl};
+  border-radius: 24px;
   padding: 3rem;
-  text-align: center;
   position: relative;
-  box-shadow: 0 10px 40px ${({ theme }) => theme.colors.shadow};
+  overflow: hidden;
+  box-shadow: 0 16px 48px ${({ theme }) => theme.colors.shadowDark};
+  animation: ${fadeSlide} 0.5s ease both;
+  key: ${({ $key }) => $key};
+
+  /* subtle gradient bg */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #0EA5E9 0%, #6366F1 100%);
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: 2rem;
+    padding: 2rem 1.5rem;
   }
 `;
 
-const QuoteIcon = styled.div`
+const QuoteFloating = styled.div`
   position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 48px;
-  height: 48px;
-  background: ${({ theme }) => theme.colors.gradient};
-  border-radius: ${({ theme }) => theme.borderRadius.full};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
+  top: 1.5rem;
+  right: 2rem;
+  color: ${({ theme }) => theme.colors.border};
+  opacity: 0.4;
 `;
 
-const TestimonialText = styled.p`
-  font-size: ${({ theme }) => theme.fontSizes.lg};
-  color: ${({ theme }) => theme.colors.text};
-  line-height: 1.8;
-  margin-bottom: 2rem;
-  font-style: italic;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.fontSizes.base};
-  }
-`;
-
-const Stars = styled.div`
+const StarsRow = styled.div`
   display: flex;
-  justify-content: center;
   gap: 0.25rem;
+  justify-content: center;
   margin-bottom: 1.5rem;
 
   svg {
     color: #FBBF24;
-    fill: #FBBF24;
+  }
+`;
+
+const TestText = styled.p`
+  font-size: 1.0625rem;
+  color: ${({ theme }) => theme.colors.text};
+  line-height: 1.85;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: 0.95rem;
   }
 `;
 
@@ -80,16 +106,18 @@ const Author = styled.div`
 `;
 
 const Avatar = styled.div`
-  width: 56px;
-  height: 56px;
-  background: ${({ theme }) => theme.colors.gradient};
-  border-radius: ${({ theme }) => theme.borderRadius.full};
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, #0EA5E9 0%, #6366F1 100%);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: ${({ theme }) => theme.fontSizes.xl};
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  font-size: 1.25rem;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(14,165,233,0.3);
+  flex-shrink: 0;
 `;
 
 const AuthorInfo = styled.div`
@@ -97,138 +125,123 @@ const AuthorInfo = styled.div`
 `;
 
 const AuthorName = styled.div`
-  font-size: ${({ theme }) => theme.fontSizes.base};
-  font-weight: ${({ theme }) => theme.fontWeights.semibold};
+  font-weight: 700;
   color: ${({ theme }) => theme.colors.text};
+  font-size: 0.95rem;
 `;
 
-const AuthorTitle = styled.div`
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-  color: ${({ theme }) => theme.colors.textSecondary};
+const AuthorRole = styled.div`
+  font-size: 0.8rem;
+  color: ${({ theme }) => theme.colors.textMuted};
+  margin-top: 0.125rem;
 `;
 
-const NavButtons = styled.div`
+const Controls = styled.div`
   display: flex;
+  align-items: center;
   justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
 `;
 
-const NavButton = styled.button`
-  width: 48px;
-  height: 48px;
+const NavBtn = styled.button`
+  width: 46px;
+  height: 46px;
   background: ${({ theme }) => theme.colors.surface};
   border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: ${({ theme }) => theme.borderRadius.full};
+  border-radius: 50%;
   color: ${({ theme }) => theme.colors.text};
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all ${({ theme }) => theme.transitions.normal};
+  transition: all 0.25s ease;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.primary};
+    background: ${({ theme }) => theme.colors.gradient};
     color: white;
-    border-color: ${({ theme }) => theme.colors.primary};
-  }
-
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+    border-color: transparent;
+    transform: scale(1.1);
   }
 `;
 
 const Dots = styled.div`
   display: flex;
-  justify-content: center;
   gap: 0.5rem;
-  margin-top: 1.5rem;
 `;
 
 const Dot = styled.button`
-  width: 10px;
-  height: 10px;
-  background: ${({ theme, $active }) => 
-    $active ? theme.colors.primary : theme.colors.border};
+  width: ${({ $active }) => ($active ? '2rem' : '0.5rem')};
+  height: 0.5rem;
+  background: ${({ $active, theme }) => ($active ? theme.colors.primary : theme.colors.border)};
   border: none;
-  border-radius: 50%;
+  border-radius: 9999px;
   cursor: pointer;
-  transition: all ${({ theme }) => theme.transitions.fast};
+  transition: all 0.35s ease;
 
   &:hover {
     background: ${({ theme }) => theme.colors.primary};
+    width: 1rem;
   }
 `;
 
-var testimonials = [
+const testimonials = [
   {
     text: 'HP saya bootloop parah, udah pasrah mau beli baru. Ternyata di Athif Software Solutions Banyuwangi bisa diperbaiki dalam hitungan jam! Mantap banget, harga juga terjangkau.',
     name: 'Budi Santoso',
-    title: 'Pengusaha UMKM, Banyuwangi',
+    role: 'Pengusaha UMKM, Banyuwangi',
     rating: 5,
   },
   {
     text: 'Laptop saya blue screen terus, kerja jadi terhambat. Service di Athif Software Solutions cepat banget, sekarang laptop udah normal lagi. Recommended banget buat warga Banyuwangi!',
     name: 'Sarah Putri',
-    title: 'Content Creator, Banyuwangi',
+    role: 'Content Creator, Banyuwangi',
     rating: 5,
   },
   {
     text: 'Pelayanan 24 jam beneran! Tengah malam HP error, langsung direspon dan di-flash. Layanan flashing HP terbaik di Banyuwangi!',
     name: 'Ahmad Rizki',
-    title: 'Mahasiswa, Banyuwangi',
+    role: 'Mahasiswa, Banyuwangi',
     rating: 5,
   },
   {
     text: 'iPhone saya terkunci iCloud, dibawa ke Athif Software Solutions langsung bisa diakses lagi. Teknisinya profesional, perbaikan software terlengkap di Banyuwangi.',
     name: 'Maya Dewi',
-    title: 'Marketing Manager, Banyuwangi',
+    role: 'Marketing Manager, Banyuwangi',
     rating: 5,
   },
 ];
 
 export default function Testimonials() {
   var [current, setCurrent] = useState(0);
-  var [isAutoPlay, setIsAutoPlay] = useState(true);
-  var intervalRef = useRef(null);
+  var [autoPlay, setAutoPlay] = useState(true);
+  var [key, setKey] = useState(0);
+  var timerRef = useRef(null);
+
+  var goTo = useCallback(function(idx) {
+    setCurrent(idx);
+    setKey(function(k) { return k + 1; });
+  }, []);
+
+  var goPrev = useCallback(function() {
+    setAutoPlay(false);
+    goTo(current === 0 ? testimonials.length - 1 : current - 1);
+  }, [current, goTo]);
+
+  var goNext = useCallback(function() {
+    setAutoPlay(false);
+    goTo((current + 1) % testimonials.length);
+  }, [current, goTo]);
 
   useEffect(function() {
-    if (isAutoPlay) {
-      intervalRef.current = setInterval(function() {
-        setCurrent(function(prev) {
-          return (prev + 1) % testimonials.length;
-        });
-      }, 5000);
-    }
+    if (!autoPlay) return;
+    timerRef.current = setInterval(function() {
+      goTo(function(prev) { return (prev + 1) % testimonials.length; });
+    }, 5000);
+    return function() { clearInterval(timerRef.current); };
+  }, [autoPlay, goTo]);
 
-    return function() {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [isAutoPlay]);
-
-  function handlePrev() {
-    setIsAutoPlay(false);
-    setCurrent(function(prev) {
-      return prev === 0 ? testimonials.length - 1 : prev - 1;
-    });
-  }
-
-  function handleNext() {
-    setIsAutoPlay(false);
-    setCurrent(function(prev) {
-      return (prev + 1) % testimonials.length;
-    });
-  }
-
-  function handleDotClick(index) {
-    setIsAutoPlay(false);
-    setCurrent(index);
-  }
-
-  var testimonial = testimonials[current];
+  var t = testimonials[current];
 
   return (
     <Section>
@@ -236,53 +249,55 @@ export default function Testimonials() {
         <ScrollAnimation animation="fadeInUp">
           <SectionTitle
             title="Apa Kata Mereka?"
-            subtitle="Testimoni dari pelanggan yang sudah merasakan layanan kami."
+            subtitle="Testimoni nyata dari pelanggan yang sudah merasakan layanan Athif Software Solutions."
           />
         </ScrollAnimation>
 
         <TestimonialWrapper>
           <ScrollAnimation animation="scaleIn">
-            <TestimonialCard>
-              <QuoteIcon>
-                <Quotes size={24} weight="fill" />
-              </QuoteIcon>
-              <Stars>
-                {Array.from({ length: testimonial.rating }).map(function(_, i) {
+            <Card key={key}>
+              <QuoteFloating>
+                <Quotes size={80} weight="fill" />
+              </QuoteFloating>
+
+              <StarsRow>
+                {Array.from({ length: t.rating }).map(function(_, i) {
                   return <Star key={i} size={20} weight="fill" />;
                 })}
-              </Stars>
-              <TestimonialText>&ldquo;{testimonial.text}&rdquo;</TestimonialText>
+              </StarsRow>
+
+              <TestText>&ldquo;{t.text}&rdquo;</TestText>
+
               <Author>
-                <Avatar>{testimonial.name.charAt(0)}</Avatar>
+                <Avatar>{t.name.charAt(0)}</Avatar>
                 <AuthorInfo>
-                  <AuthorName>{testimonial.name}</AuthorName>
-                  <AuthorTitle>{testimonial.title}</AuthorTitle>
+                  <AuthorName>{t.name}</AuthorName>
+                  <AuthorRole>{t.role}</AuthorRole>
                 </AuthorInfo>
               </Author>
-            </TestimonialCard>
+            </Card>
           </ScrollAnimation>
 
-          <NavButtons>
-            <NavButton onClick={handlePrev} aria-label="Previous">
-              <CaretLeft size={24} weight="bold" />
-            </NavButton>
-            <NavButton onClick={handleNext} aria-label="Next">
-              <CaretRight size={24} weight="bold" />
-            </NavButton>
-          </NavButtons>
-
-          <Dots>
-            {testimonials.map(function(_, index) {
-              return (
-                <Dot
-                  key={index}
-                  $active={index === current}
-                  onClick={function() { handleDotClick(index); }}
-                  aria-label={'Go to testimonial ' + (index + 1)}
-                />
-              );
-            })}
-          </Dots>
+          <Controls>
+            <NavBtn onClick={goPrev} aria-label="Previous">
+              <CaretLeft size={20} weight="bold" />
+            </NavBtn>
+            <Dots>
+              {testimonials.map(function(_, idx) {
+                return (
+                  <Dot
+                    key={idx}
+                    $active={idx === current}
+                    onClick={function() { setAutoPlay(false); goTo(idx); }}
+                    aria-label={'Testimonial ' + (idx + 1)}
+                  />
+                );
+              })}
+            </Dots>
+            <NavBtn onClick={goNext} aria-label="Next">
+              <CaretRight size={20} weight="bold" />
+            </NavBtn>
+          </Controls>
         </TestimonialWrapper>
       </Container>
     </Section>
