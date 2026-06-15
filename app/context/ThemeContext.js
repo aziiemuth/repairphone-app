@@ -24,8 +24,7 @@ export function ThemeProvider({ children }) {
     initialized.current = true;
 
     var savedTheme = localStorage.getItem('theme');
-    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var initialDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+    var initialDark = savedTheme === 'dark';
     
     setIsDark(initialDark);
     setMounted(true);

@@ -100,6 +100,7 @@ const ButtonGroup = styled.div`
 const MainCTA = styled.a`
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
   padding: 1rem 2.25rem;
   font-size: 1rem;
@@ -117,11 +118,16 @@ const MainCTA = styled.a`
   }
 
   svg { flex-shrink: 0; }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
+  }
 `;
 
 const SecondaryCTA = styled.a`
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.625rem;
   padding: 1rem 2.25rem;
   font-size: 1rem;
@@ -138,6 +144,10 @@ const SecondaryCTA = styled.a`
     background: rgba(255, 255, 255, 0.18);
     border-color: rgba(255, 255, 255, 0.35);
     transform: translateY(-2px);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
   }
 `;
 
