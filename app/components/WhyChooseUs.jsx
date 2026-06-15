@@ -49,30 +49,18 @@ const Card = styled.div`
   gap: 1.25rem;
   padding: 1.75rem;
   background: ${({ theme }) => theme.colors.surface};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: 20px;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid ${({ theme }) => theme.colors.borderStrong};
+  border-radius: 16px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   cursor: default;
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: ${({ $gradient }) => $gradient};
-    opacity: 0;
-    transition: opacity 0.35s ease;
-  }
+  box-shadow: ${({ theme }) => theme.colors.shadowMd};
 
   &:hover {
-    transform: translateY(-6px) translateX(4px);
-    box-shadow: 0 20px 48px ${({ theme }) => theme.colors.shadowDark};
-    border-color: transparent;
-
-    &::after {
-      opacity: 0.04;
-    }
+    transform: translateY(-4px) translateX(2px);
+    box-shadow: ${({ theme }) => theme.colors.shadowHover};
+    border-color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
@@ -90,7 +78,7 @@ const IconBox = styled.div`
   width: 56px;
   height: 56px;
   min-width: 56px;
-  background: ${({ $gradient }) => $gradient};
+  background: ${({ theme }) => theme.colors.gradient};
   border-radius: 16px;
   color: white;
   box-shadow: 0 8px 20px ${({ $shadow }) => $shadow};

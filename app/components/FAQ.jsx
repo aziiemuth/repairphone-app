@@ -155,7 +155,7 @@ function FAQItem({ item, index }) {
 
 export default function FAQ() {
   return (
-    <Section>
+    <Section id="faq">
       <Container>
         <ScrollAnimation animation="fadeInUp">
           <SectionTitle

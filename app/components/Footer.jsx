@@ -59,7 +59,7 @@ const LogoRow = styled.div`
   .logo-icon {
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, #0EA5E9, #6366F1);
+    background: ${({ theme }) => theme.colors.gradient};
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -108,7 +108,7 @@ const SocialBtn = styled.a`
   transition: all 0.25s ease;
 
   &:hover {
-    background: linear-gradient(135deg, #0EA5E9, #6366F1);
+    background: ${({ theme }) => theme.colors.gradient};
     border-color: transparent;
     color: white;
     transform: translateY(-2px);

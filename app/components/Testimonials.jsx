@@ -41,12 +41,12 @@ const TestimonialWrapper = styled.div`
 
 const Card = styled.div`
   background: ${({ theme }) => theme.colors.surface};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: 24px;
+  border: 2px solid ${({ theme }) => theme.colors.borderStrong};
+  border-radius: 16px;
   padding: 3rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 16px 48px ${({ theme }) => theme.colors.shadowDark};
+  box-shadow: ${({ theme }) => theme.colors.shadowMd};
   animation: ${fadeSlide} 0.5s ease both;
   key: ${({ $key }) => $key};
 
@@ -244,7 +244,7 @@ export default function Testimonials() {
   var t = testimonials[current];
 
   return (
-    <Section>
+    <Section id="testimoni">
       <Container>
         <ScrollAnimation animation="fadeInUp">
           <SectionTitle

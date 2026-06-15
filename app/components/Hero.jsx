@@ -11,6 +11,12 @@ import {
   Play,
   CaretLeft,
   CaretRight,
+  Lightning,
+  LockKeyOpen,
+  Laptop,
+  LockKey,
+  Wrench,
+  DeviceMobile,
 } from '@phosphor-icons/react';
 import Container from './ui/Container';
 import Button from './ui/Button';
@@ -71,10 +77,7 @@ const Slide = styled.div`
 const SliderOverlay = styled.div`
   position: absolute;
   inset: 0;
-  background: ${({ theme }) =>
-    theme.isDark
-      ? 'linear-gradient(135deg, rgba(7,11,20,0.92) 0%, rgba(12,26,58,0.85) 50%, rgba(7,11,20,0.88) 100%)'
-      : 'linear-gradient(135deg, rgba(15,23,42,0.88) 0%, rgba(12,36,89,0.82) 50%, rgba(15,23,42,0.84) 100%)'};
+  background: ${({ theme }) => theme.colors.gradientHero};
   z-index: 1;
 `;
 
@@ -182,7 +185,7 @@ const Title = styled.h1`
 `;
 
 const GradientSpan = styled.span`
-  background: linear-gradient(135deg, #38BDF8 0%, #818CF8 100%);
+  background: ${({ theme }) => theme.colors.gradient};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -212,6 +215,11 @@ const ButtonRow = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     justify-content: center;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 `;
 
 const WAButton = styled.a`
@@ -234,6 +242,11 @@ const WAButton = styled.a`
   }
 
   svg { flex-shrink: 0; }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
+    justify-content: center;
+  }
 `;
 
 const SecondaryButton = styled.a`
@@ -255,6 +268,11 @@ const SecondaryButton = styled.a`
     background: rgba(255, 255, 255, 0.18);
     border-color: rgba(255, 255, 255, 0.4);
     transform: translateY(-2px);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
+    justify-content: center;
   }
 `;
 
@@ -293,14 +311,14 @@ const HeroRight = styled.div`
 `;
 
 const StatsCard = styled.div`
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(16px);
-  border-radius: 20px;
+  background: ${({ theme }) => theme.colors.surface};
+  border: 2px solid ${({ theme }) => theme.colors.borderStrong};
+  border-radius: 16px;
   padding: 1.5rem 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
+  box-shadow: ${({ theme }) => theme.colors.shadowMd};
 `;
 
 const StatItem = styled.div`
@@ -316,7 +334,7 @@ const StatItem = styled.div`
     color: white;
     letter-spacing: -0.03em;
     line-height: 1;
-    background: linear-gradient(135deg, #38BDF8, #818CF8);
+    background: ${({ theme }) => theme.colors.gradient};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -337,6 +355,9 @@ const ServiceTags = styled.div`
 `;
 
 const ServiceTag = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.5rem 1rem;
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -389,12 +410,12 @@ const bgImages = [
 ];
 
 const serviceTags = [
-  { label: '⚡ Flashing HP', delay: '3.2s' },
-  { label: '🔓 Bypass FRP', delay: '3.8s' },
-  { label: '💻 Install Ulang OS', delay: '4.2s' },
-  { label: '🛡️ Unlock HP', delay: '3.5s' },
-  { label: '🔧 Troubleshoot', delay: '4s' },
-  { label: '📲 Software Repair', delay: '3.3s' },
+  { Icon: Lightning, label: 'Flashing HP', delay: '3.2s' },
+  { Icon: LockKeyOpen, label: 'Bypass FRP', delay: '3.8s' },
+  { Icon: Laptop, label: 'Install Ulang OS', delay: '4.2s' },
+  { Icon: LockKey, label: 'Unlock HP', delay: '3.5s' },
+  { Icon: Wrench, label: 'Troubleshoot', delay: '4s' },
+  { Icon: DeviceMobile, label: 'Software Repair', delay: '3.3s' },
 ];
 
 const WHATSAPP_URL = 'https://wa.me/62816234185?text=' + encodeURIComponent('Halo, saya ingin konsultasi perbaikan software.');
@@ -508,6 +529,7 @@ export default function Hero() {
               {serviceTags.map(function(tag) {
                 return (
                   <ServiceTag key={tag.label} $delay={tag.delay}>
+                    <tag.Icon size={16} weight="duotone" />
                     {tag.label}
                   </ServiceTag>
                 );

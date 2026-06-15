@@ -91,7 +91,7 @@ const IconRing = styled.div`
     position: absolute;
     inset: -3px;
     border-radius: 50%;
-    background: ${({ $gradient }) => $gradient};
+    background: ${({ theme }) => theme.colors.gradient};
     opacity: 0;
     z-index: -1;
     transition: opacity 0.3s ease;
@@ -99,7 +99,7 @@ const IconRing = styled.div`
 
   ${StepCard}:hover & {
     transform: scale(1.1);
-    background: ${({ $gradient }) => $gradient};
+    background: ${({ theme }) => theme.colors.gradient};
     color: white;
     border-color: transparent;
     box-shadow: 0 16px 40px ${({ theme }) => theme.colors.shadowMd};
@@ -116,7 +116,7 @@ const StepBadge = styled.div`
   right: -4px;
   width: 28px;
   height: 28px;
-  background: ${({ $gradient }) => $gradient};
+  background: ${({ theme }) => theme.colors.gradient};
   color: white;
   border-radius: 50%;
   display: flex;
@@ -171,7 +171,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <Section>
+    <Section id="proses">
       <Container>
         <ScrollAnimation animation="fadeInUp">
           <SectionTitle

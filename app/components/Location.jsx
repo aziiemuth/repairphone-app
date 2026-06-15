@@ -51,7 +51,7 @@ const MapCard = styled.div`
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(135deg, #0EA5E9, #6366F1);
+    background: ${({ theme }) => theme.colors.gradient};
     z-index: 1;
   }
 `;
@@ -86,7 +86,7 @@ const IconBox = styled.div`
   width: 52px;
   height: 52px;
   min-width: 52px;
-  background: ${({ $gradient }) => $gradient};
+  background: ${({ theme }) => theme.colors.gradient};
   border-radius: 14px;
   color: white;
   box-shadow: 0 6px 16px ${({ $shadow }) => $shadow};

@@ -75,7 +75,7 @@ const Title = styled.h2`
   margin-bottom: 1.25rem;
 
   span {
-    background: linear-gradient(135deg, #38BDF8, #818CF8);
+    background: ${({ theme }) => theme.colors.gradient};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

@@ -20,16 +20,13 @@ const Nav = styled.nav`
   padding: ${({ $scrolled }) => ($scrolled ? '0.6rem 0' : '1.25rem 0')};
   background: ${({ $scrolled, theme }) =>
     $scrolled
-      ? theme.isDark
-        ? 'rgba(7, 11, 20, 0.92)'
-        : 'rgba(248, 250, 252, 0.92)'
+      ? theme.colors.surface
       : 'transparent'};
-  backdrop-filter: ${({ $scrolled }) => ($scrolled ? 'blur(20px) saturate(180%)' : 'none')};
   border-bottom: 1px solid ${({ $scrolled, theme }) =>
     $scrolled ? theme.colors.border : 'transparent'};
   box-shadow: ${({ $scrolled, theme }) =>
-    $scrolled ? `0 4px 32px ${theme.colors.shadow}` : 'none'};
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    $scrolled ? theme.colors.shadowMd : 'none'};
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 const NavContainer = styled.div`
@@ -209,7 +206,8 @@ const Sidebar = styled.div`
   top: 0;
   right: 0;
   bottom: 0;
-  width: 300px;
+  width: 85vw;
+  max-width: 320px;
   background: ${({ theme }) => theme.colors.surface};
   z-index: 1001;
   transform: translateX(${({ $open }) => ($open ? '0' : '100%')});
@@ -376,6 +374,9 @@ const WHATSAPP_URL = 'https://wa.me/62816234185?text=' + encodeURIComponent('Hal
 const navLinks = [
   { href: '#layanan', label: 'Layanan' },
   { href: '#keunggulan', label: 'Keunggulan' },
+  { href: '#proses', label: 'Cara Kerja' },
+  { href: '#testimoni', label: 'Testimoni' },
+  { href: '#faq', label: 'FAQ' },
   { href: '#lokasi', label: 'Lokasi' },
   { href: '#kontak', label: 'Kontak' },
 ];

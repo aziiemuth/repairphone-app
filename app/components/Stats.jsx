@@ -63,7 +63,7 @@ const Card = styled.div`
     left: 0;
     right: 0;
     height: 3px;
-    background: ${({ $gradient }) => $gradient};
+    background: ${({ theme }) => theme.colors.gradient};
     opacity: 0;
     transition: opacity 0.3s ease;
   }
@@ -85,7 +85,7 @@ const IconRing = styled.div`
   justify-content: center;
   width: 68px;
   height: 68px;
-  background: ${({ $gradient }) => $gradient};
+  background: ${({ theme }) => theme.colors.gradient};
   border-radius: 50%;
   color: white;
   margin-bottom: 1.25rem;
@@ -100,7 +100,7 @@ const IconRing = styled.div`
 const Number = styled.div`
   font-size: 2.5rem;
   font-weight: 800;
-  background: ${({ $gradient }) => $gradient};
+  background: ${({ theme }) => theme.colors.gradient};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

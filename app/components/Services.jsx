@@ -48,14 +48,15 @@ const Grid = styled.div`
 
 const Card = styled.div`
   background: ${({ theme }) => theme.colors.surface};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: 20px;
+  border: 2px solid ${({ theme }) => theme.colors.borderStrong};
+  border-radius: 16px;
   padding: 2rem;
   position: relative;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: default;
   group: true;
+  box-shadow: ${({ theme }) => theme.colors.shadowMd};
 
   /* Gradient accent on top */
   &::before {
@@ -64,34 +65,20 @@ const Card = styled.div`
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    background: ${({ $gradient }) => $gradient};
+    height: 4px;
+    background: ${({ theme }) => theme.colors.gradient};
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.4s ease;
-  }
-
-  /* Glow bg on hover */
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: ${({ $gradient }) => $gradient};
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: transform 0.3s ease;
   }
 
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 24px 48px ${({ theme }) => theme.colors.shadowDark};
-    border-color: transparent;
+    transform: translateY(-4px);
+    box-shadow: ${({ theme }) => theme.colors.shadowHover};
+    border-color: ${({ theme }) => theme.colors.primary};
 
     &::before {
       transform: scaleX(1);
-    }
-
-    &::after {
-      opacity: 0.04;
     }
   }
 `;
@@ -107,7 +94,7 @@ const IconBox = styled.div`
   justify-content: center;
   width: 60px;
   height: 60px;
-  background: ${({ $gradient }) => $gradient};
+  background: ${({ theme }) => theme.colors.gradient};
   border-radius: 16px;
   color: white;
   margin-bottom: 1.5rem;
@@ -295,7 +282,7 @@ export default function Services() {
         <ScrollAnimation animation="fadeInUp" delay={0.3}>
           <NoteBanner>
             <p className="note-text">
-              ⚡ Semua layanan fokus pada <span>SOFTWARE ONLY</span> — Untuk kerusakan hardware kami tidak melayani.
+              <Lightning size={18} weight="fill" color="#EAB308" style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Semua layanan fokus pada <span>SOFTWARE ONLY</span> — Untuk kerusakan hardware kami tidak melayani.
             </p>
             <a className="note-cta" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
               <WhatsappLogo size={16} weight="fill" />
