@@ -9,6 +9,7 @@ const outfit = Outfit({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://repair.aziiemuth.my.id"),
   title:
     "Athif Software Solutions - Jasa Flashing HP & Perbaikan Software Banyuwangi 24 Jam",
   description:
