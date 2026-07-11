@@ -190,16 +190,7 @@ export default function CTA() {
               Athif Software Solutions siap membantu — konsultasi gratis,
               respon cepat, harga terjangkau!
             </Description>
-            <ButtonGroup>
-              <MainCTA href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                <WhatsappLogo size={22} weight="fill" />
-                Chat WhatsApp Sekarang
-                <ArrowRight size={18} weight="bold" />
-              </MainCTA>
-              <SecondaryCTA href="#layanan">
-                Lihat Layanan Kami
-              </SecondaryCTA>
-            </ButtonGroup>
+
             <TrustRow>
               <TrustItem>
                 <Clock size={16} weight="duotone" />
