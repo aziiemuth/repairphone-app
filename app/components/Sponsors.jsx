@@ -71,6 +71,14 @@ const LogoItem = styled.div`
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+    filter: ${({ theme }) => (theme.isDark ? 'brightness(0) invert(1)' : 'grayscale(100%)')};
+    opacity: 0.7;
+    transition: all ${({ theme }) => theme.transitions.normal};
+  }
+
+  &:hover img {
+    opacity: 1;
+    filter: ${({ theme }) => (theme.isDark ? 'brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.5))' : 'grayscale(0%)')};
   }
 `;
 
