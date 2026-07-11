@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import styled, { css, keyframes } from 'styled-components';
-import { List, X, DeviceMobile, WhatsappLogo, InstagramLogo, ArrowRight } from '@phosphor-icons/react';
+import { List, X, DeviceMobile, WhatsappLogo, InstagramLogo, ArrowRight, House, Wrench, Star, Phone } from '@phosphor-icons/react';
 import Container from './ui/Container';
 import ThemeToggle from './ui/ThemeToggle';
 
@@ -183,10 +183,6 @@ const MobileMenuBtn = styled.button`
     background: ${({ $scrolled, theme }) => ($scrolled ? theme.colors.primaryLight : 'rgba(255, 255, 255, 0.2)')};
     color: ${({ $scrolled, theme }) => ($scrolled ? theme.colors.primary : 'white')};
     border-color: ${({ $scrolled, theme }) => ($scrolled ? theme.colors.primary : 'rgba(255, 255, 255, 0.3)')};
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    display: flex;
   }
 `;
 
@@ -369,6 +365,57 @@ const SocialBtn = styled.a`
   }
 `;
 
+const MobileBottomNav = styled.nav`
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: ${({ theme }) => theme.colors.surface};
+  border-top: 1px solid ${({ theme }) => theme.colors.border};
+  z-index: 1000;
+  padding: 0.5rem 0.25rem;
+  padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+`;
+
+const BottomNavItem = styled.a`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  color: ${({ theme }) => theme.colors.textMuted};
+  text-decoration: none;
+  transition: all 0.2s ease;
+  flex: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  .icon {
+    transition: all 0.2s ease;
+  }
+
+  .label {
+    font-size: 0.65rem;
+    font-weight: 500;
+  }
+
+  &:hover, &:active {
+    color: ${({ theme }) => theme.colors.primary};
+    .icon {
+      transform: translateY(-2px);
+    }
+  }
+`;
+
 const WHATSAPP_URL = 'https://wa.me/62816234185?text=' + encodeURIComponent('Halo, saya ingin konsultasi perbaikan software.');
 
 const navLinks = [
@@ -489,6 +536,25 @@ export default function Navbar() {
           </SocialRow>
         </SidebarBottom>
       </Sidebar>
+
+      <MobileBottomNav>
+        <BottomNavItem href="#">
+          <House size={22} weight="duotone" className="icon" />
+          <span className="label">Home</span>
+        </BottomNavItem>
+        <BottomNavItem href="#layanan">
+          <Wrench size={22} weight="duotone" className="icon" />
+          <span className="label">Layanan</span>
+        </BottomNavItem>
+        <BottomNavItem href="#testimoni">
+          <Star size={22} weight="duotone" className="icon" />
+          <span className="label">Testimoni</span>
+        </BottomNavItem>
+        <BottomNavItem as="button" onClick={openSidebar}>
+          <List size={22} weight="duotone" className="icon" />
+          <span className="label">Menu</span>
+        </BottomNavItem>
+      </MobileBottomNav>
     </>
   );
 }

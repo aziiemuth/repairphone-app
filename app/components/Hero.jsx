@@ -311,14 +311,15 @@ const HeroRight = styled.div`
 `;
 
 const StatsCard = styled.div`
-  background: ${({ theme }) => theme.colors.surface};
-  border: 2px solid ${({ theme }) => theme.colors.borderStrong};
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   padding: 1.5rem 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
-  box-shadow: ${({ theme }) => theme.colors.shadowMd};
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 `;
 
 const StatItem = styled.div`
