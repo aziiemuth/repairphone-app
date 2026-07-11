@@ -16,7 +16,6 @@ import FAQ from './components/FAQ';
 import Location from './components/Location';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
-import WhatsAppFloat from './components/WhatsAppFloat';
 import ScrollToTop from './components/ui/ScrollToTop';
 
 export default function Home() {
@@ -60,7 +59,6 @@ export default function Home() {
         <CTA />
       </main>
       <Footer />
-      <WhatsAppFloat />
       <ScrollToTop />
     </ThemeProvider>
   );
