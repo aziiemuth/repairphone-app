@@ -1,10 +1,17 @@
 export default function sitemap() {
+  const baseUrl = 'https://repair.aziiemuth.my.id';
+  
   return [
     {
-      url: 'https://repair.aziiemuth.my.id',
+      url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'monthly',
       priority: 1.0,
+      alternates: {
+        languages: {
+          'id-ID': baseUrl,
+        },
+      },
     },
   ];
 }
