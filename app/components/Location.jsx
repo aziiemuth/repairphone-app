@@ -171,10 +171,10 @@ export default function Location() {
 
           <InfoStack>
             <ScrollAnimation animation="fadeInRight" delay={0}>
-              <InfoCard $borderColor="#0EA5E9">
+              <InfoCard $borderColor="#6366F1">
                 <IconBox
-                  $gradient="linear-gradient(135deg, #0EA5E9, #6366F1)"
-                  $shadow="rgba(14,165,233,0.25)"
+                  $gradient="linear-gradient(135deg, #6366F1, #8B5CF6)"
+                  $shadow="rgba(99,102,241,0.25)"
                 >
                   <MapPin size={24} weight="duotone" />
                 </IconBox>
@@ -186,7 +186,7 @@ export default function Location() {
                   <ExternalLink
                     href="https://maps.google.com/?q=-8.201556,114.378694"
                     target="_blank"
-                    $color="#0EA5E9"
+                    $color="#6366F1"
                   >
                     Buka di Maps <ArrowSquareOut size={12} />
                   </ExternalLink>

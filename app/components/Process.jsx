@@ -147,7 +147,7 @@ const steps = [
     Icon: ChatsCircle,
     title: 'Konsultasi',
     desc: 'Hubungi kami & jelaskan masalah device Anda untuk estimasi awal.',
-    gradient: 'linear-gradient(135deg, #0EA5E9, #6366F1)',
+    gradient: 'linear-gradient(135deg, #6366F1, #8B5CF6)',
   },
   {
     Icon: MagnifyingGlass,

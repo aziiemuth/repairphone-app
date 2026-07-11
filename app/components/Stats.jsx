@@ -122,8 +122,8 @@ const stats = [
     number: 500,
     suffix: '+',
     label: 'Pelanggan Puas',
-    gradient: 'linear-gradient(135deg, #0EA5E9, #6366F1)',
-    shadow: 'rgba(14,165,233,0.3)',
+    gradient: 'linear-gradient(135deg, #6366F1, #8B5CF6)',
+    shadow: 'rgba(99,102,241,0.3)',
     delay: '0s',
   },
   {

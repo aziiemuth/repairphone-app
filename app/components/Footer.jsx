@@ -28,7 +28,7 @@ const Section = styled.footer`
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(135deg, #0EA5E9 0%, #6366F1 50%, #EC4899 100%);
+    background: ${({ theme }) => theme.colors.gradient};
   }
 `;
 
@@ -292,7 +292,7 @@ export default function Footer() {
                 <InstagramLogo size={16} weight="fill" />
                 <span>@athiief</span>
               </ContactItem>
-              <ContactItem $color="#0EA5E9">
+              <ContactItem $color="#6366F1">
                 <MapPin size={16} weight="duotone" />
                 <span>Banyuwangi, Jawa Timur</span>
               </ContactItem>

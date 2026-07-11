@@ -200,9 +200,9 @@ const services = [
     Icon: DeviceMobile,
     title: 'Perbaikan Software HP',
     desc: 'Spesialis perbaikan software HP di Banyuwangi. Android & iOS — bootloop, stuck logo, error system, semua bisa ditangani.',
-    gradient: 'linear-gradient(135deg, #0EA5E9, #6366F1)',
-    shadow: 'rgba(14,165,233,0.25)',
-    color: '#0EA5E9',
+    gradient: 'linear-gradient(135deg, #6366F1, #8B5CF6)',
+    shadow: 'rgba(99,102,241,0.25)',
+    color: '#6366F1',
   },
   {
     Icon: Laptop,
@@ -240,9 +240,9 @@ const services = [
     Icon: GearSix,
     title: 'Optimasi & Troubleshoot',
     desc: 'Device lemot atau error? Kami optimasi dan troubleshoot HP & laptop di Banyuwangi sampai device kembali normal.',
-    gradient: 'linear-gradient(135deg, #06B6D4, #0EA5E9)',
-    shadow: 'rgba(6,182,212,0.25)',
-    color: '#06B6D4',
+    gradient: 'linear-gradient(135deg, #EC4899, #F43F5E)',
+    shadow: 'rgba(236,72,153,0.25)',
+    color: '#EC4899',
   },
 ];
 

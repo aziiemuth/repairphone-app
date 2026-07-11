@@ -112,8 +112,8 @@ const features = [
     Icon: Clock,
     title: 'Layanan 24 Jam Nonstop',
     desc: 'Kapanpun butuh bantuan, kami siap melayani nonstop 24 jam setiap hari termasuk hari libur.',
-    gradient: 'linear-gradient(135deg, #0EA5E9, #6366F1)',
-    shadow: 'rgba(14,165,233,0.25)',
+    gradient: 'linear-gradient(135deg, #6366F1, #8B5CF6)',
+    shadow: 'rgba(99,102,241,0.25)',
   },
   {
     Icon: ChatCircleDots,

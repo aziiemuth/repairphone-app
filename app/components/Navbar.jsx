@@ -476,11 +476,7 @@ export default function Navbar() {
             </NavLinks>
 
             <NavActions>
-              <CTANavButton href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                <WhatsappLogo size={18} weight="fill" />
-                Chat Sekarang
-                <ArrowRight size={14} weight="bold" />
-              </CTANavButton>
+
               <ThemeToggle $scrolled={scrolled} />
               <MobileMenuBtn onClick={openSidebar} aria-label="Open menu" $scrolled={scrolled}>
                 <List size={22} weight="bold" />

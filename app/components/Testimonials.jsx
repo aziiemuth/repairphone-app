@@ -58,7 +58,7 @@ const Card = styled.div`
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(135deg, #0EA5E9 0%, #6366F1 100%);
+    background: ${({ theme }) => theme.colors.gradient};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -108,7 +108,7 @@ const Author = styled.div`
 const Avatar = styled.div`
   width: 52px;
   height: 52px;
-  background: linear-gradient(135deg, #0EA5E9 0%, #6366F1 100%);
+  background: ${({ theme }) => theme.colors.gradient};
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -116,7 +116,7 @@ const Avatar = styled.div`
   color: white;
   font-size: 1.25rem;
   font-weight: 700;
-  box-shadow: 0 4px 16px rgba(14,165,233,0.3);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
   flex-shrink: 0;
 `;
 

@@ -482,16 +482,7 @@ export default function Hero() {
               jadi, tanpa ribet!
             </Subtitle>
 
-            <ButtonRow>
-              <WAButton href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                <WhatsappLogo size={22} weight="fill" />
-                Chat WhatsApp Sekarang
-              </WAButton>
-              <SecondaryButton href="#layanan">
-                <Play size={18} weight="fill" />
-                Lihat Layanan
-              </SecondaryButton>
-            </ButtonRow>
+
 
             <TrustBadges>
               <TrustItem>

@@ -2,9 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 
-// Theming: Orange and Blue to match the site's brand
-const colorRGB = '234, 88, 12'; // Primary Orange (#EA580C)
-const accentRGB = '37, 99, 235'; // Accent Blue (#2563EB)
+const colorRGB = '99, 102, 241'; // Primary Indigo (#6366F1)
+const accentRGB = '139, 92, 246'; // Secondary Violet (#8B5CF6)
 
 class Particle {
   constructor(x, y) {
