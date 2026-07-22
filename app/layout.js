@@ -151,7 +151,7 @@ const jsonLd = {
   },
 };
 
-import CursorTrail from './components/ui/CursorTrail';
+
 
 export default function RootLayout({ children }) {
   return (
@@ -163,7 +163,6 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={outfit.className}>
-        <CursorTrail />
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>

@@ -1,84 +1,49 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import styled, { keyframes, css } from 'styled-components';
-import { Star, CaretLeft, CaretRight, Quotes } from '@phosphor-icons/react';
+import styled, { keyframes } from 'styled-components';
+import { Star, CaretLeft, CaretRight } from '@phosphor-icons/react';
 import Container from './ui/Container';
 import SectionTitle from './ui/SectionTitle';
 import ScrollAnimation from './ui/ScrollAnimation';
 
 const fadeSlide = keyframes`
-  from { opacity: 0; transform: translateY(16px); }
+  from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 `;
 
 const Section = styled.section`
-  padding: 7rem 0;
+  padding: 6rem 0;
   background: ${({ theme }) => theme.colors.backgroundAlt};
-  position: relative;
-  overflow: hidden;
 
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: -200px;
-    left: -200px;
-    width: 500px;
-    height: 500px;
-    background: ${({ theme }) => theme.colors.secondaryLight};
-    border-radius: 50%;
-    filter: blur(80px);
-    pointer-events: none;
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 4rem 0;
   }
 `;
 
 const TestimonialWrapper = styled.div`
-  max-width: 820px;
+  max-width: 680px;
   margin: 0 auto;
   position: relative;
-  z-index: 1;
 `;
 
 const Card = styled.div`
   background: ${({ theme }) => theme.colors.surface};
-  border: 2px solid ${({ theme }) => theme.colors.borderStrong};
-  border-radius: 16px;
-  padding: 3rem;
-  position: relative;
-  overflow: hidden;
-  box-shadow: ${({ theme }) => theme.colors.shadowMd};
-  animation: ${fadeSlide} 0.5s ease both;
-  key: ${({ $key }) => $key};
-
-  /* subtle gradient bg */
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: ${({ theme }) => theme.colors.gradient};
-  }
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: 12px;
+  padding: 2.5rem;
+  animation: ${fadeSlide} 0.4s ease both;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: 2rem 1.5rem;
+    padding: 1.75rem 1.5rem;
   }
-`;
-
-const QuoteFloating = styled.div`
-  position: absolute;
-  top: 1.5rem;
-  right: 2rem;
-  color: ${({ theme }) => theme.colors.border};
-  opacity: 0.4;
 `;
 
 const StarsRow = styled.div`
   display: flex;
   gap: 0.25rem;
   justify-content: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 
   svg {
     color: #FBBF24;
@@ -86,12 +51,12 @@ const StarsRow = styled.div`
 `;
 
 const TestText = styled.p`
-  font-size: 1.0625rem;
+  font-size: 1rem;
   color: ${({ theme }) => theme.colors.text};
-  line-height: 1.85;
+  line-height: 1.8;
   font-style: italic;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: 0.95rem;
@@ -102,21 +67,20 @@ const Author = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.75rem;
 `;
 
 const Avatar = styled.div`
-  width: 52px;
-  height: 52px;
-  background: ${({ theme }) => theme.colors.gradient};
+  width: 44px;
+  height: 44px;
+  background: ${({ theme }) => theme.colors.primaryLight};
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 1.25rem;
+  color: ${({ theme }) => theme.colors.primary};
+  font-size: 1.125rem;
   font-weight: 700;
-  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
   flex-shrink: 0;
 `;
 
@@ -127,11 +91,11 @@ const AuthorInfo = styled.div`
 const AuthorName = styled.div`
   font-weight: 700;
   color: ${({ theme }) => theme.colors.text};
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 `;
 
 const AuthorRole = styled.div`
-  font-size: 0.8rem;
+  font-size: 0.775rem;
   color: ${({ theme }) => theme.colors.textMuted};
   margin-top: 0.125rem;
 `;
@@ -141,12 +105,12 @@ const Controls = styled.div`
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 1.75rem;
 `;
 
 const NavBtn = styled.button`
-  width: 46px;
-  height: 46px;
+  width: 42px;
+  height: 42px;
   background: ${({ theme }) => theme.colors.surface};
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 50%;
@@ -155,13 +119,16 @@ const NavBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.gradient};
+    background: ${({ theme }) => theme.colors.primary};
     color: white;
     border-color: transparent;
-    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 `;
 
@@ -171,7 +138,7 @@ const Dots = styled.div`
 `;
 
 const Dot = styled.button`
-  width: ${({ $active }) => ($active ? '2rem' : '0.5rem')};
+  width: ${({ $active }) => ($active ? '1.5rem' : '0.5rem')};
   height: 0.5rem;
   background: ${({ $active, theme }) => ($active ? theme.colors.primary : theme.colors.border)};
   border: none;
@@ -181,31 +148,30 @@ const Dot = styled.button`
 
   &:hover {
     background: ${({ theme }) => theme.colors.primary};
-    width: 1rem;
   }
 `;
 
 const testimonials = [
   {
-    text: 'HP saya bootloop parah, udah pasrah mau beli baru. Ternyata di Athif Software Solutions Banyuwangi bisa diperbaiki dalam hitungan jam! Mantap banget, harga juga terjangkau.',
+    text: 'HP saya bootloop parah, udah pasrah mau beli baru. Ternyata di Athif Software Solutions bisa diperbaiki dalam hitungan jam! Harga juga terjangkau.',
     name: 'Budi Santoso',
     role: 'Pengusaha UMKM, Banyuwangi',
     rating: 5,
   },
   {
-    text: 'Laptop saya blue screen terus, kerja jadi terhambat. Service di Athif Software Solutions cepat banget, sekarang laptop udah normal lagi. Recommended banget buat warga Banyuwangi!',
+    text: 'Laptop blue screen terus, kerja jadi terhambat. Service di sini cepat banget, sekarang laptop udah normal lagi.',
     name: 'Sarah Putri',
     role: 'Content Creator, Banyuwangi',
     rating: 5,
   },
   {
-    text: 'Pelayanan 24 jam beneran! Tengah malam HP error, langsung direspon dan di-flash. Layanan flashing HP terbaik di Banyuwangi!',
+    text: 'Pelayanan 24 jam beneran! Tengah malam HP error, langsung direspon dan di-flash. Layanan terbaik di Banyuwangi!',
     name: 'Ahmad Rizki',
     role: 'Mahasiswa, Banyuwangi',
     rating: 5,
   },
   {
-    text: 'iPhone saya terkunci iCloud, dibawa ke Athif Software Solutions langsung bisa diakses lagi. Teknisinya profesional, perbaikan software terlengkap di Banyuwangi.',
+    text: 'iPhone saya terkunci iCloud, langsung bisa diakses lagi. Teknisinya profesional dan terpercaya.',
     name: 'Maya Dewi',
     role: 'Marketing Manager, Banyuwangi',
     rating: 5,
@@ -249,24 +215,20 @@ export default function Testimonials() {
         <ScrollAnimation animation="fadeInUp">
           <SectionTitle
             title="Apa Kata Mereka?"
-            subtitle="Testimoni nyata dari pelanggan yang sudah merasakan layanan Athif Software Solutions."
+            subtitle="Testimoni dari pelanggan yang sudah merasakan layanan kami."
           />
         </ScrollAnimation>
 
         <TestimonialWrapper>
           <ScrollAnimation animation="scaleIn">
             <Card key={key}>
-              <QuoteFloating>
-                <Quotes size={80} weight="fill" />
-              </QuoteFloating>
-
               <StarsRow>
                 {Array.from({ length: t.rating }).map(function(_, i) {
-                  return <Star key={i} size={20} weight="fill" />;
+                  return <Star key={i} size={18} weight="fill" />;
                 })}
               </StarsRow>
 
-              <TestText>&ldquo;{t.text}&rdquo;</TestText>
+              <TestText>{'\u201C'}{t.text}{'\u201D'}</TestText>
 
               <Author>
                 <Avatar>{t.name.charAt(0)}</Avatar>
@@ -280,7 +242,7 @@ export default function Testimonials() {
 
           <Controls>
             <NavBtn onClick={goPrev} aria-label="Previous">
-              <CaretLeft size={20} weight="bold" />
+              <CaretLeft size={18} weight="bold" />
             </NavBtn>
             <Dots>
               {testimonials.map(function(_, idx) {
@@ -295,7 +257,7 @@ export default function Testimonials() {
               })}
             </Dots>
             <NavBtn onClick={goNext} aria-label="Next">
-              <CaretRight size={20} weight="bold" />
+              <CaretRight size={18} weight="bold" />
             </NavBtn>
           </Controls>
         </TestimonialWrapper>

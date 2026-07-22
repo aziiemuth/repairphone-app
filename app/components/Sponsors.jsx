@@ -3,7 +3,6 @@
 import styled, { keyframes } from 'styled-components';
 import Image from 'next/image';
 import Container from './ui/Container';
-import SectionTitle from './ui/SectionTitle';
 import ScrollAnimation from './ui/ScrollAnimation';
 
 const scrollLeft = keyframes`
@@ -15,33 +14,30 @@ const scrollLeft = keyframes`
   }
 `;
 
-const scrollRight = keyframes`
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+const Section = styled.section`
+  padding: 3.5rem 0;
+  background: ${({ theme }) => theme.colors.background};
+  overflow: hidden;
 `;
 
-const Section = styled.section`
-  padding: 4rem 0;
-  background: ${({ theme }) => theme.colors.backgroundAlt};
-  overflow: hidden;
+const Label = styled.p`
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.textMuted};
+  margin-bottom: 1.5rem;
 `;
 
 const MarqueeWrapper = styled.div`
   overflow: hidden;
   margin: 0 -1.5rem;
-  padding: 1rem 0;
 `;
 
 const MarqueeTrack = styled.div`
   display: flex;
-  gap: 3rem;
+  gap: 2.5rem;
   width: max-content;
-  animation: ${({ $direction }) => ($direction === 'left' ? scrollLeft : scrollRight)} 
-    ${({ $duration }) => $duration || 30}s linear infinite;
+  animation: ${scrollLeft} 30s linear infinite;
 
   &:hover {
     animation-play-state: paused;
@@ -53,9 +49,9 @@ const LogoItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 120px;
-  height: 80px;
-  padding: 1rem;
+  width: 110px;
+  height: 70px;
+  padding: 0.875rem;
   background: ${({ theme }) => theme.isDark ? 'rgba(255, 255, 255, 0.95)' : theme.colors.surface};
   border: 1px solid ${({ theme }) => theme.isDark ? 'rgba(255, 255, 255, 0.1)' : theme.colors.border};
   border-radius: ${({ theme }) => theme.borderRadius.lg};
@@ -63,7 +59,6 @@ const LogoItem = styled.div`
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 30px ${({ theme }) => theme.colors.shadow};
     border-color: ${({ theme }) => theme.colors.primary};
   }
 
@@ -71,19 +66,10 @@ const LogoItem = styled.div`
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    transition: all ${({ theme }) => theme.transitions.normal};
-  }
-
-  &:hover img {
-    transform: scale(1.05);
   }
 `;
 
-const Spacer = styled.div`
-  height: 1.5rem;
-`;
-
-// Images from public/foto folder
+// All images in a single row
 const sponsorImages = [
   '/foto/pngwing.com.png',
   '/foto/pngwing.com (1).png',
@@ -99,56 +85,26 @@ const sponsorImages = [
   '/foto/pngwing.com (11).png',
 ];
 
-// Split into two rows
-var firstRow = sponsorImages.slice(0, 6);
-var secondRow = sponsorImages.slice(6, 12);
-
 export default function Sponsors() {
   return (
     <Section>
       <Container>
         <ScrollAnimation animation="fadeInUp">
-          <SectionTitle
-            title="Dipercaya Oleh"
-            subtitle="Berbagai brand dan perusahaan telah mempercayakan perbaikan software kepada kami."
-          />
+          <Label>Dipercaya oleh berbagai brand</Label>
         </ScrollAnimation>
       </Container>
-      
-      {/* First row - scroll left */}
+
       <MarqueeWrapper>
-        <MarqueeTrack $direction="left" $duration={25}>
-          {/* Double the items for seamless loop */}
-          {[...firstRow, ...firstRow].map(function(src, index) {
+        <MarqueeTrack>
+          {/* Double for seamless loop */}
+          {[...sponsorImages, ...sponsorImages].map(function(src, index) {
             return (
-              <LogoItem key={'row1-' + index}>
+              <LogoItem key={'logo-' + index}>
                 <Image
                   src={src}
-                  alt={'Partner ' + (index + 1)}
-                  width={100}
-                  height={60}
-                  style={{ objectFit: 'contain' }}
-                />
-              </LogoItem>
-            );
-          })}
-        </MarqueeTrack>
-      </MarqueeWrapper>
-
-      <Spacer />
-
-      {/* Second row - scroll right */}
-      <MarqueeWrapper>
-        <MarqueeTrack $direction="right" $duration={30}>
-          {/* Double the items for seamless loop */}
-          {[...secondRow, ...secondRow].map(function(src, index) {
-            return (
-              <LogoItem key={'row2-' + index}>
-                <Image
-                  src={src}
-                  alt={'Partner ' + (index + 7)}
-                  width={100}
-                  height={60}
+                  alt={'Partner ' + ((index % sponsorImages.length) + 1)}
+                  width={90}
+                  height={50}
                   style={{ objectFit: 'contain' }}
                 />
               </LogoItem>

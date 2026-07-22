@@ -1,15 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import { useState, useEffect, useRef } from 'react';
+import styled from 'styled-components';
 import { List, X, DeviceMobile, WhatsappLogo, InstagramLogo, ArrowRight, House, Wrench, Star, Phone } from '@phosphor-icons/react';
 import Container from './ui/Container';
 import ThemeToggle from './ui/ThemeToggle';
-
-const slideDown = keyframes`
-  from { opacity: 0; transform: translateY(-100%); }
-  to { opacity: 1; transform: translateY(0); }
-`;
 
 const Nav = styled.nav`
   position: fixed;
@@ -17,7 +12,7 @@ const Nav = styled.nav`
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: ${({ $scrolled }) => ($scrolled ? '0.6rem 0' : '1.25rem 0')};
+  padding: ${({ $scrolled }) => ($scrolled ? '0.5rem 0' : '1rem 0')};
   background: ${({ $scrolled, theme }) =>
     $scrolled
       ? theme.colors.surface
@@ -33,7 +28,7 @@ const NavContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 56px;
+  height: 48px;
 `;
 
 const Logo = styled.a`
@@ -46,8 +41,8 @@ const Logo = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     background: ${({ theme }) => theme.colors.gradient};
     border-radius: 10px;
     color: white;
@@ -72,17 +67,11 @@ const Logo = styled.a`
     font-size: 0.65rem;
     font-weight: 500;
     color: ${({ $scrolled, theme }) => ($scrolled ? theme.colors.primary : 'rgba(255, 255, 255, 0.85)')};
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.02em;
   }
 
   &:hover .logo-icon {
-    transform: rotate(-10deg) scale(1.1);
-    box-shadow: 0 8px 24px ${({ theme }) => theme.colors.shadowHover};
-  }
-
-  &:hover .logo-name {
-    color: ${({ theme }) => theme.colors.primary};
+    transform: rotate(-6deg) scale(1.08);
   }
 `;
 
@@ -98,34 +87,17 @@ const NavLinks = styled.div`
 
 const NavLink = styled.a`
   position: relative;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.875rem;
   font-weight: 500;
   color: ${({ $scrolled, theme }) => ($scrolled ? theme.colors.textSecondary : 'rgba(255, 255, 255, 0.85)')};
-  border-radius: ${({ theme }) => theme.borderRadius.lg};
+  border-radius: ${({ theme }) => theme.borderRadius.md};
   transition: all ${({ theme }) => theme.transitions.fast};
   white-space: nowrap;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 2px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 2px;
-    background: ${({ theme }) => theme.colors.gradient};
-    border-radius: 1px;
-    transition: width ${({ theme }) => theme.transitions.normal};
-  }
 
   &:hover {
     color: ${({ $scrolled, theme }) => ($scrolled ? theme.colors.text : 'white')};
     background: ${({ $scrolled, theme }) => ($scrolled ? theme.colors.primaryLight : 'rgba(255, 255, 255, 0.1)')};
-  }
-
-  &:hover::after {
-    width: calc(100% - 2rem);
   }
 `;
 
@@ -135,56 +107,7 @@ const NavActions = styled.div`
   gap: 0.75rem;
 `;
 
-const CTANavButton = styled.a`
-  display: none;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1.25rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: white;
-  background: ${({ theme }) => theme.colors.gradient};
-  border-radius: ${({ theme }) => theme.borderRadius.full};
-  transition: all ${({ theme }) => theme.transitions.spring};
-  box-shadow: 0 4px 16px ${({ theme }) => theme.colors.shadowMd};
 
-  &:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 24px ${({ theme }) => theme.colors.shadowHover};
-  }
-
-  svg {
-    transition: transform ${({ theme }) => theme.transitions.fast};
-  }
-
-  &:hover svg {
-    transform: translateX(3px);
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-    display: inline-flex;
-  }
-`;
-
-const MobileMenuBtn = styled.button`
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: ${({ $scrolled, theme }) => ($scrolled ? theme.colors.surface : 'rgba(255, 255, 255, 0.1)')};
-  border: 1px solid ${({ $scrolled, theme }) => ($scrolled ? theme.colors.border : 'rgba(255, 255, 255, 0.2)')};
-  border-radius: ${({ theme }) => theme.borderRadius.md};
-  color: ${({ $scrolled, theme }) => ($scrolled ? theme.colors.text : 'white')};
-  cursor: pointer;
-  transition: all ${({ theme }) => theme.transitions.fast};
-
-  &:hover {
-    background: ${({ $scrolled, theme }) => ($scrolled ? theme.colors.primaryLight : 'rgba(255, 255, 255, 0.2)')};
-    color: ${({ $scrolled, theme }) => ($scrolled ? theme.colors.primary : 'white')};
-    border-color: ${({ $scrolled, theme }) => ($scrolled ? theme.colors.primary : 'rgba(255, 255, 255, 0.3)')};
-  }
-`;
 
 const Overlay = styled.div`
   position: fixed;
@@ -274,16 +197,6 @@ const SidebarNav = styled.div`
   gap: 0.375rem;
 `;
 
-const SidebarNavLabel = styled.p`
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.textMuted};
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0 0.75rem;
-  margin-bottom: 0.5rem;
-`;
-
 const SidebarLink = styled.a`
   display: flex;
   align-items: center;
@@ -327,15 +240,15 @@ const SidebarCTA = styled.a`
   font-size: 0.9rem;
   font-weight: 600;
   color: white;
-  background: ${({ theme }) => theme.colors.gradient};
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
   border-radius: ${({ theme }) => theme.borderRadius.lg};
   transition: all ${({ theme }) => theme.transitions.normal};
-  box-shadow: 0 4px 16px ${({ theme }) => theme.colors.shadowMd};
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
   margin-bottom: 1rem;
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px ${({ theme }) => theme.colors.shadowHover};
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
   }
 `;
 
@@ -358,7 +271,7 @@ const SocialBtn = styled.a`
   transition: all 0.2s ease;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.gradient};
+    background: ${({ theme }) => theme.colors.primary};
     color: white;
     border-color: transparent;
     transform: translateY(-2px);
@@ -425,19 +338,32 @@ const navLinks = [
   { href: '#testimoni', label: 'Testimoni' },
   { href: '#faq', label: 'FAQ' },
   { href: '#lokasi', label: 'Lokasi' },
-  { href: '#kontak', label: 'Kontak' },
 ];
 
 export default function Navbar() {
   var [mobileOpen, setMobileOpen] = useState(false);
   var [scrolled, setScrolled] = useState(false);
+  var sentinelRef = useRef(null);
 
   useEffect(function() {
-    function handleScroll() {
-      setScrolled(window.scrollY > 60);
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return function() { window.removeEventListener('scroll', handleScroll); };
+    // Use IntersectionObserver instead of scroll listener
+    var sentinel = document.createElement('div');
+    sentinel.style.cssText = 'position:absolute;top:60px;height:1px;width:1px;pointer-events:none;';
+    document.body.prepend(sentinel);
+    sentinelRef.current = sentinel;
+
+    var observer = new IntersectionObserver(
+      function(entries) {
+        setScrolled(!entries[0].isIntersecting);
+      },
+      { threshold: 0 }
+    );
+    observer.observe(sentinel);
+
+    return function() {
+      observer.disconnect();
+      if (sentinel.parentNode) sentinel.parentNode.removeChild(sentinel);
+    };
   }, []);
 
   function openSidebar() {
@@ -457,7 +383,7 @@ export default function Navbar() {
           <NavContainer>
             <Logo href="#" $scrolled={scrolled}>
               <div className="logo-icon">
-                <DeviceMobile size={22} weight="duotone" />
+                <DeviceMobile size={20} weight="duotone" />
               </div>
               <div className="logo-text">
                 <span className="logo-name">Athif Software</span>
@@ -476,11 +402,7 @@ export default function Navbar() {
             </NavLinks>
 
             <NavActions>
-
               <ThemeToggle $scrolled={scrolled} />
-              <MobileMenuBtn onClick={openSidebar} aria-label="Open menu" $scrolled={scrolled}>
-                <List size={22} weight="bold" />
-              </MobileMenuBtn>
             </NavActions>
           </NavContainer>
         </Container>
@@ -502,7 +424,6 @@ export default function Navbar() {
         </SidebarHeader>
 
         <SidebarNav>
-          <SidebarNavLabel>Navigasi</SidebarNavLabel>
           {navLinks.map(function(link) {
             return (
               <SidebarLink
@@ -520,7 +441,7 @@ export default function Navbar() {
         <SidebarBottom>
           <SidebarCTA href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
             <WhatsappLogo size={20} weight="fill" />
-            Chat WhatsApp Sekarang
+            Hubungi Kami
           </SidebarCTA>
           <SocialRow>
             <SocialBtn href="https://instagram.com/athiief" target="_blank" aria-label="Instagram">

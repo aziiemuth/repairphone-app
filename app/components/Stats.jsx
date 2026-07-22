@@ -1,159 +1,89 @@
 'use client';
 
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
-import { Users, CheckCircle, Clock, Star } from '@phosphor-icons/react';
 import Container from './ui/Container';
 
-const floatUp = keyframes`
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+const Section = styled.section`
+  padding: 3rem 0;
+  background: ${({ theme }) => theme.colors.background};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
 `;
 
-const Section = styled.section`
-  padding: 5rem 0;
-  background: ${({ theme }) => theme.colors.backgroundAlt};
-  position: relative;
-  overflow: hidden;
+const Row = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: ${({ theme }) => theme.colors.gradient};
-    opacity: 0.3;
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
   }
 `;
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+const Stat = styled.div`
+  flex: 1;
+  text-align: center;
+  padding: 1rem 1.5rem;
+  position: relative;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    grid-template-columns: repeat(2, 1fr);
+  /* Divider between stats */
+  &:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 40px;
+    background: ${({ theme }) => theme.colors.border};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-`;
+    padding: 1rem 0.75rem;
 
-const Card = styled.div`
-  background: ${({ theme }) => theme.colors.surface};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: 20px;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  animation: ${floatUp} 0.6s ${({ $delay }) => $delay} ease both;
-  cursor: default;
+    &:nth-child(2)::after {
+      display: none;
+    }
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: ${({ theme }) => theme.colors.gradient};
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
+    &:nth-child(odd):not(:last-child)::after {
+      display: block;
+    }
 
-  &:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px ${({ theme }) => theme.colors.shadowDark};
-    border-color: ${({ theme }) => theme.colors.primary};
-
-    &::before {
-      opacity: 1;
+    &:nth-child(even)::after {
+      display: none;
     }
   }
 `;
 
-const IconRing = styled.div`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 68px;
-  height: 68px;
-  background: ${({ theme }) => theme.colors.gradient};
-  border-radius: 50%;
-  color: white;
-  margin-bottom: 1.25rem;
-  box-shadow: 0 8px 24px ${({ $shadow }) => $shadow};
-  transition: all 0.3s ease;
+const Number = styled.div`
+  font-size: 2rem;
+  font-weight: 800;
+  color: ${({ theme }) => theme.colors.primary};
+  margin-bottom: 0.25rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
 
-  ${Card}:hover & {
-    transform: scale(1.12) rotate(-5deg);
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: 1.625rem;
   }
 `;
 
-const Number = styled.div`
-  font-size: 2.5rem;
-  font-weight: 800;
-  background: ${({ theme }) => theme.colors.gradient};
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 0.5rem;
-  line-height: 1;
-  letter-spacing: -0.04em;
-`;
-
 const Label = styled.div`
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.textSecondary};
-  line-height: 1.4;
+  color: ${({ theme }) => theme.colors.textMuted};
+  line-height: 1.3;
 `;
 
 const stats = [
-  {
-    Icon: Users,
-    number: 500,
-    suffix: '+',
-    label: 'Pelanggan Puas',
-    gradient: 'linear-gradient(135deg, #6366F1, #8B5CF6)',
-    shadow: 'rgba(99,102,241,0.3)',
-    delay: '0s',
-  },
-  {
-    Icon: CheckCircle,
-    number: 1200,
-    suffix: '+',
-    label: 'Device Diperbaiki',
-    gradient: 'linear-gradient(135deg, #10B981, #06B6D4)',
-    shadow: 'rgba(16,185,129,0.3)',
-    delay: '0.1s',
-  },
-  {
-    Icon: Clock,
-    number: 24,
-    suffix: '/7',
-    label: 'Layanan Nonstop',
-    gradient: 'linear-gradient(135deg, #F59E0B, #EF4444)',
-    shadow: 'rgba(245,158,11,0.3)',
-    delay: '0.2s',
-  },
-  {
-    Icon: Star,
-    number: 4.9,
-    decimals: 1,
-    suffix: '',
-    label: 'Rating Pelanggan',
-    gradient: 'linear-gradient(135deg, #8B5CF6, #EC4899)',
-    shadow: 'rgba(139,92,246,0.3)',
-    delay: '0.3s',
-  },
+  { number: 500, suffix: '+', label: 'Pelanggan Puas' },
+  { number: 1200, suffix: '+', label: 'Device Diperbaiki' },
+  { number: 24, suffix: '/7', label: 'Layanan Nonstop' },
+  { number: 4.9, decimals: 1, suffix: '', label: 'Rating Google' },
 ];
 
 export default function Stats() {
@@ -162,18 +92,11 @@ export default function Stats() {
   return (
     <Section ref={ref}>
       <Container>
-        <Grid>
+        <Row>
           {stats.map(function(stat) {
             return (
-              <Card
-                key={stat.label}
-                $delay={stat.delay}
-                $gradient={stat.gradient}
-              >
-                <IconRing $gradient={stat.gradient} $shadow={stat.shadow}>
-                  <stat.Icon size={30} weight="duotone" />
-                </IconRing>
-                <Number $gradient={stat.gradient}>
+              <Stat key={stat.label}>
+                <Number>
                   {inView ? (
                     <CountUp
                       end={stat.number}
@@ -186,10 +109,10 @@ export default function Stats() {
                   )}
                 </Number>
                 <Label>{stat.label}</Label>
-              </Card>
+              </Stat>
             );
           })}
-        </Grid>
+        </Row>
       </Container>
     </Section>
   );

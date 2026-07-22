@@ -5,7 +5,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import GlobalStyles from './styles/GlobalStyles';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import TrustBar from './components/TrustBar';
+
 import Stats from './components/Stats';
 import Services from './components/Services';
 import Process from './components/Process';
@@ -47,7 +47,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <TrustBar />
+
         <Stats />
         <Services />
         <Process />

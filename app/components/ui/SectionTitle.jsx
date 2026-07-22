@@ -7,31 +7,6 @@ const Wrapper = styled.div`
   margin-bottom: 3.5rem;
 `;
 
-const Pill = styled.span`
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.375rem 1rem;
-  background: ${({ theme }) => theme.colors.primaryLight};
-  border: 1px solid ${({ theme }) => theme.colors.primary}33;
-  color: ${({ theme }) => theme.colors.primary};
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 1.125rem;
-
-  &::before {
-    content: '';
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    background: ${({ theme }) => theme.colors.primary};
-    border-radius: 50%;
-  }
-`;
-
 const Title = styled.h2`
   font-size: clamp(1.75rem, 3.5vw, 2.5rem);
   font-weight: 800;
@@ -42,27 +17,6 @@ const Title = styled.h2`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 1.625rem;
-  }
-`;
-
-const Underline = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.375rem;
-  margin-bottom: 1.125rem;
-
-  .line {
-    height: 3px;
-    border-radius: 9999px;
-    background: ${({ theme }) => theme.colors.border};
-  }
-
-  .accent {
-    width: 48px;
-    height: 4px;
-    border-radius: 9999px;
-    background: ${({ theme }) => theme.colors.gradient};
   }
 `;
 
@@ -78,16 +32,10 @@ const Subtitle = styled.p`
   }
 `;
 
-export default function SectionTitle({ title, subtitle, pill }) {
+export default function SectionTitle({ title, subtitle }) {
   return (
     <Wrapper>
-      {pill && <Pill>{pill}</Pill>}
       <Title>{title}</Title>
-      <Underline>
-        <div className="line" style={{ width: '32px' }} />
-        <div className="accent" />
-        <div className="line" style={{ width: '32px' }} />
-      </Underline>
       {subtitle && <Subtitle>{subtitle}</Subtitle>}
     </Wrapper>
   );
