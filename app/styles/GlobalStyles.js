@@ -19,7 +19,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: ${theme.fonts.primary};
     font-size: ${theme.fontSizes.base};
     line-height: 1.6;
-    background: ${({ theme }) => theme.colors.background};
+    background: ${({ theme }) => theme.isDark ? theme.colors.backgroundGradient : theme.colors.background};
     color: ${({ theme }) => theme.colors.text};
     transition: background 0.4s ease, color 0.4s ease;
     -webkit-font-smoothing: antialiased;

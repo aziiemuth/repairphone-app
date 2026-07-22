@@ -14,9 +14,13 @@ import ScrollAnimation from './ui/ScrollAnimation';
 
 const Section = styled.footer`
   background: ${({ theme }) =>
-    theme.isDark ? '#09090B' : '#18181B'};
+    theme.isDark ? theme.colors.backgroundAlt : '#18181B'};
   padding: 4rem 0 0;
   position: relative;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+  }
 `;
 
 const Grid = styled.div`

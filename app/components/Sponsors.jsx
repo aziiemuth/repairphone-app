@@ -50,10 +50,10 @@ const LogoItem = styled.div`
   align-items: center;
   justify-content: center;
   width: 110px;
-  height: 70px;
-  padding: 0.875rem;
-  background: ${({ theme }) => theme.isDark ? 'rgba(255, 255, 255, 0.95)' : theme.colors.surface};
-  border: 1px solid ${({ theme }) => theme.isDark ? 'rgba(255, 255, 255, 0.1)' : theme.colors.border};
+  height: 60px;
+  padding: 0.75rem 1rem;
+  background: ${({ theme }) => theme.colors.surface};
+  border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.borderRadius.lg};
   transition: all ${({ theme }) => theme.transitions.normal};
 
@@ -66,6 +66,12 @@ const LogoItem = styled.div`
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+    filter: ${({ theme }) => (theme.isDark ? 'brightness(0) invert(0.85) opacity(0.85)' : 'grayscale(100%) opacity(0.65)')};
+    transition: all ${({ theme }) => theme.transitions.normal};
+  }
+
+  &:hover img {
+    filter: ${({ theme }) => (theme.isDark ? 'brightness(0) invert(1) opacity(1)' : 'none')};
   }
 `;
 
