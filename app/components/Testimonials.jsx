@@ -214,7 +214,7 @@ export default function Testimonials() {
   var t = testimonials[current];
 
   return (
-    <Section id="testimoni">
+    <Section id="testimoni" aria-label="Testimoni Pelanggan">
       <Container>
         <ScrollAnimation animation="fadeInUp">
           <SectionTitle

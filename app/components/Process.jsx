@@ -138,7 +138,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <Section id="proses">
+    <Section id="proses" aria-label="Cara Kerja">
       <Container>
         <ScrollAnimation animation="fadeInUp">
           <SectionTitle

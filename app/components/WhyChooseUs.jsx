@@ -106,7 +106,7 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <Section id="keunggulan">
+    <Section id="keunggulan" aria-label="Keunggulan Kami">
       <Container>
         <ScrollAnimation animation="fadeInUp">
           <SectionTitle

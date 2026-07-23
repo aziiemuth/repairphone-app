@@ -73,7 +73,7 @@ const WHATSAPP_URL = 'https://wa.me/62816234185?text=' + encodeURIComponent('Hal
 
 export default function CTA() {
   return (
-    <Section id="kontak">
+    <Section id="kontak" aria-label="Konsultasi Perbaikan">
       <Container>
         <ScrollAnimation animation="scaleIn">
           <Inner>

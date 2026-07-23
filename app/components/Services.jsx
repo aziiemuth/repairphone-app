@@ -195,7 +195,7 @@ const services = [
 
 export default function Services() {
   return (
-    <Section id="layanan">
+    <Section id="layanan" aria-label="Layanan Perbaikan">
       <Container>
         <ScrollAnimation animation="fadeInUp">
           <SectionTitle

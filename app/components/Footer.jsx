@@ -206,7 +206,7 @@ export default function Footer() {
   var currentYear = new Date().getFullYear();
 
   return (
-    <Section>
+    <Section aria-label="Informasi Footer">
       <Container>
         <ScrollAnimation animation="fadeInUp">
           <Grid>

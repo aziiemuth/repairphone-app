@@ -117,7 +117,7 @@ const MAP_URL = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3948.0!2d
 
 export default function Location() {
   return (
-    <Section id="lokasi">
+    <Section id="lokasi" aria-label="Lokasi dan Informasi Kontak">
       <Container>
         <ScrollAnimation animation="fadeInUp">
           <SectionTitle

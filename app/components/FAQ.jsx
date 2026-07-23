@@ -153,7 +153,7 @@ function FAQItem({ item, index }) {
 
 export default function FAQ() {
   return (
-    <Section id="faq">
+    <Section id="faq" aria-label="Pertanyaan Umum (FAQ)">
       <Container>
         <ScrollAnimation animation="fadeInUp">
           <SectionTitle

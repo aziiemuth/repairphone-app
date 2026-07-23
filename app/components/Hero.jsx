@@ -217,7 +217,7 @@ export default function Hero() {
   }, [goNext]);
 
   return (
-    <SliderSection id="hero">
+    <SliderSection id="hero" aria-label="Beranda Utama">
       {/* Background Slider */}
       <SlideTrack>
         {bgImages.map(function(img, idx) {

@@ -157,6 +157,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="id" className={outfit.variable} suppressHydrationWarning={true}>
       <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/foto/background 1.webp"
+          type="image/webp"
+          fetchPriority="high"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

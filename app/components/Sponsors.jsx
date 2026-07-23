@@ -92,7 +92,7 @@ const sponsorImages = [
 
 export default function Sponsors() {
   return (
-    <Section>
+    <Section aria-label="Partner dan Brand">
       <Container>
         <ScrollAnimation animation="fadeInUp">
           <Label>Dipercaya oleh berbagai brand</Label>
