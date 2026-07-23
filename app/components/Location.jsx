@@ -151,6 +151,8 @@ export default function Location() {
                   <ExternalLink
                     href="https://maps.google.com/?q=-8.201556,114.378694"
                     target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Buka lokasi Athif Software Solutions di Google Maps"
                   >
                     Buka di Maps <ArrowSquareOut size={12} />
                   </ExternalLink>
@@ -181,6 +183,8 @@ export default function Location() {
                   <ExternalLink
                     href="https://wa.me/62816234185"
                     target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Chat WhatsApp dengan Athif Software Solutions"
                   >
                     Chat Sekarang <ArrowSquareOut size={12} />
                   </ExternalLink>

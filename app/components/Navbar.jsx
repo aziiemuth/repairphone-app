@@ -170,8 +170,8 @@ const SidebarBrand = styled.div`
 `;
 
 const CloseBtn = styled.button`
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -259,8 +259,8 @@ const SocialRow = styled.div`
 `;
 
 const SocialBtn = styled.a`
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -302,7 +302,10 @@ const BottomNavItem = styled.a`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 0.25rem;
+  min-height: 48px;
+  min-width: 48px;
   color: ${({ theme }) => theme.colors.textMuted};
   text-decoration: none;
   transition: all 0.2s ease;
@@ -310,7 +313,7 @@ const BottomNavItem = styled.a`
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
+  padding: 0.25rem 0;
 
   .icon {
     transition: all 0.2s ease;
@@ -381,7 +384,7 @@ export default function Navbar() {
       <Nav $scrolled={scrolled}>
         <Container>
           <NavContainer>
-            <Logo href="#" $scrolled={scrolled}>
+            <Logo href="#" $scrolled={scrolled} aria-label="Athif Software Solutions Banyuwangi - Beranda">
               <div className="logo-icon">
                 <DeviceMobile size={20} weight="duotone" />
               </div>
@@ -418,7 +421,7 @@ export default function Navbar() {
             </div>
             <span className="brand-name">Athif Software</span>
           </SidebarBrand>
-          <CloseBtn onClick={closeSidebar} aria-label="Close menu">
+          <CloseBtn onClick={closeSidebar} aria-label="Tutup menu navigasi">
             <X size={18} weight="bold" />
           </CloseBtn>
         </SidebarHeader>
@@ -439,15 +442,20 @@ export default function Navbar() {
         </SidebarNav>
 
         <SidebarBottom>
-          <SidebarCTA href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+          <SidebarCTA
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Hubungi kami via WhatsApp"
+          >
             <WhatsappLogo size={20} weight="fill" />
             Hubungi Kami
           </SidebarCTA>
           <SocialRow>
-            <SocialBtn href="https://instagram.com/athiief" target="_blank" aria-label="Instagram">
+            <SocialBtn href="https://instagram.com/athiief" target="_blank" aria-label="Kunjungi profil Instagram Athif Software">
               <InstagramLogo size={18} />
             </SocialBtn>
-            <SocialBtn href={WHATSAPP_URL} target="_blank" aria-label="WhatsApp">
+            <SocialBtn href={WHATSAPP_URL} target="_blank" aria-label="Chat WhatsApp Athif Software">
               <WhatsappLogo size={18} />
             </SocialBtn>
           </SocialRow>
@@ -455,19 +463,19 @@ export default function Navbar() {
       </Sidebar>
 
       <MobileBottomNav>
-        <BottomNavItem href="#">
+        <BottomNavItem href="#" aria-label="Navigasi ke Beranda">
           <House size={22} weight="duotone" className="icon" />
           <span className="label">Home</span>
         </BottomNavItem>
-        <BottomNavItem href="#layanan">
+        <BottomNavItem href="#layanan" aria-label="Navigasi ke bagian Layanan">
           <Wrench size={22} weight="duotone" className="icon" />
           <span className="label">Layanan</span>
         </BottomNavItem>
-        <BottomNavItem href="#testimoni">
+        <BottomNavItem href="#testimoni" aria-label="Navigasi ke bagian Testimoni">
           <Star size={22} weight="duotone" className="icon" />
           <span className="label">Testimoni</span>
         </BottomNavItem>
-        <BottomNavItem as="button" onClick={openSidebar}>
+        <BottomNavItem as="button" onClick={openSidebar} aria-label="Buka menu navigasi utama">
           <List size={22} weight="duotone" className="icon" />
           <span className="label">Menu</span>
         </BottomNavItem>

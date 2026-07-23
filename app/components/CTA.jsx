@@ -85,7 +85,12 @@ export default function CTA() {
               Konsultasi gratis, respon cepat, harga terjangkau.
             </Description>
 
-            <MainCTA href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+            <MainCTA
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Hubungi kami via WhatsApp untuk konsultasi gratis perbaikan software"
+            >
               <WhatsappLogo size={22} weight="fill" />
               Hubungi Kami
             </MainCTA>

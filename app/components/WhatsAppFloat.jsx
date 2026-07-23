@@ -99,7 +99,7 @@ export default function WhatsAppFloat() {
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Chat via WhatsApp"
+      aria-label="Chat WhatsApp 24 Jam dengan Athif Software Solutions"
     >
       <Tooltip>Chat via WhatsApp 💬</Tooltip>
       <WhatsappLogo size={30} weight="fill" />

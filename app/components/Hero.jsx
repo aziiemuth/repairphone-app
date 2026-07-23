@@ -65,17 +65,21 @@ const SliderDots = styled.div`
 `;
 
 const SliderDot = styled.button`
-  width: ${({ $active }) => ($active ? '2rem' : '0.5rem')};
+  width: ${({ $active }) => ($active ? '2rem' : '0.75rem')};
   height: 0.5rem;
-  background: ${({ $active }) => ($active ? 'white' : 'rgba(255,255,255,0.4)')};
+  min-width: 44px;
+  min-height: 44px;
+  padding: 18px 0;
+  background-clip: content-box;
+  background-color: ${({ $active }) => ($active ? 'white' : 'rgba(255,255,255,0.4)')};
   border: none;
   border-radius: 9999px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    background: rgba(255, 255, 255, 0.8);
-    width: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    width: 1.75rem;
   }
 `;
 
@@ -84,10 +88,10 @@ const SliderArrow = styled.button`
   top: 50%;
   transform: translateY(-50%);
   ${({ $dir }) => ($dir === 'left' ? 'left: 1.5rem;' : 'right: 1.5rem;')}
-  width: 44px;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(8px);
   border-radius: 50%;
   color: white;
@@ -99,8 +103,8 @@ const SliderArrow = styled.button`
   transition: all 0.2s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: translateY(-50%) scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.08);
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -145,7 +149,7 @@ const GradientSpan = styled.span`
 
 const Subtitle = styled.p`
   font-size: clamp(1rem, 2vw, 1.125rem);
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.7;
   margin-bottom: 2rem;
   max-width: 480px;
@@ -189,9 +193,9 @@ const WAButton = styled.a`
 `;
 
 const bgImages = [
-  '/foto/background 1.png',
-  '/foto/background 2.png',
-  '/foto/background 3.png',
+  '/foto/background 1.webp',
+  '/foto/background 2.webp',
+  '/foto/background 3.webp',
 ];
 
 const WHATSAPP_URL = 'https://wa.me/62816234185?text=' + encodeURIComponent('Halo, saya ingin konsultasi perbaikan software.');
@@ -225,11 +229,11 @@ export default function Hero() {
       </SlideTrack>
 
       {/* Arrow Controls */}
-      <SliderArrow $dir="left" onClick={goPrev} aria-label="Previous slide">
-        <CaretLeft size={20} weight="bold" />
+      <SliderArrow $dir="left" onClick={goPrev} aria-label="Slide sebelumnya">
+        <CaretLeft size={22} weight="bold" />
       </SliderArrow>
-      <SliderArrow $dir="right" onClick={goNext} aria-label="Next slide">
-        <CaretRight size={20} weight="bold" />
+      <SliderArrow $dir="right" onClick={goNext} aria-label="Slide selanjutnya">
+        <CaretRight size={22} weight="bold" />
       </SliderArrow>
 
       {/* Main Content */}
@@ -247,7 +251,12 @@ export default function Hero() {
               Layanan 24 jam, garansi 30 hari.
             </Subtitle>
 
-            <WAButton href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+            <WAButton
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Hubungi Kami via WhatsApp untuk konsultasi perbaikan software HP dan laptop"
+            >
               <WhatsappLogo size={22} weight="fill" />
               Hubungi Kami
             </WAButton>
@@ -263,7 +272,7 @@ export default function Hero() {
               key={idx}
               $active={idx === currentSlide}
               onClick={function() { setCurrentSlide(idx); }}
-              aria-label={'Slide ' + (idx + 1)}
+              aria-label={'Pindah ke slide ' + (idx + 1)}
             />
           );
         })}

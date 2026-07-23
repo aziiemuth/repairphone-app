@@ -212,6 +212,7 @@ export default function Services() {
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={'Konsultasi gratis ' + service.title + ' via WhatsApp'}
                   className={service.featured ? 'featured' : ''}
                 >
                   <div>

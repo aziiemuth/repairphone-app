@@ -75,7 +75,7 @@ const LogoRow = styled.div`
 
 const BrandDesc = styled.p`
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.7;
   max-width: 260px;
   margin-bottom: 1.25rem;
@@ -87,15 +87,15 @@ const SocialLinks = styled.div`
 `;
 
 const SocialBtn = styled.a`
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 8px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.85);
   transition: all 0.2s ease;
 
   &:hover {
@@ -108,10 +108,10 @@ const SocialBtn = styled.a`
 
 const Column = styled.div``;
 
-const ColTitle = styled.h4`
+const ColTitle = styled.h3`
   font-size: 0.75rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.35);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 1rem;
@@ -127,7 +127,7 @@ const LinkItem = styled.li``;
 
 const FooterLink = styled.a`
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.7);
   display: flex;
   align-items: center;
   gap: 0.375rem;
@@ -153,11 +153,11 @@ const ContactItem = styled.div`
 
   span {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.75);
     line-height: 1.5;
 
     strong {
-      color: rgba(255, 255, 255, 0.75);
+      color: rgba(255, 255, 255, 0.95);
       font-weight: 600;
     }
   }
@@ -165,7 +165,7 @@ const ContactItem = styled.div`
 
 const Divider = styled.hr`
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: 3rem;
 `;
 
@@ -180,7 +180,7 @@ const Bottom = styled.div`
 
 const Copyright = styled.p`
   font-size: 0.775rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.65);
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -195,10 +195,10 @@ const BottomLinks = styled.div`
 
   a {
     font-size: 0.775rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.65);
     transition: color 0.2s ease;
 
-    &:hover { color: rgba(255, 255, 255, 0.6); }
+    &:hover { color: white; }
   }
 `;
 
@@ -224,11 +224,11 @@ export default function Footer() {
                 Jasa perbaikan software HP dan laptop terpercaya di Banyuwangi. Layanan 24 jam nonstop.
               </BrandDesc>
               <SocialLinks>
-                <SocialBtn href="https://wa.me/62816234185" target="_blank" aria-label="WhatsApp">
-                  <WhatsappLogo size={16} weight="fill" />
+                <SocialBtn href="https://wa.me/62816234185" target="_blank" aria-label="Hubungi Athif Software via WhatsApp">
+                  <WhatsappLogo size={18} weight="fill" />
                 </SocialBtn>
-                <SocialBtn href="https://instagram.com/athiief" target="_blank" aria-label="Instagram">
-                  <InstagramLogo size={16} weight="fill" />
+                <SocialBtn href="https://instagram.com/athiief" target="_blank" aria-label="Kunjungi Instagram Athif Software">
+                  <InstagramLogo size={18} weight="fill" />
                 </SocialBtn>
               </SocialLinks>
             </Brand>

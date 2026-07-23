@@ -39,8 +39,8 @@ const Btn = styled.button`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     bottom: 88px;
     right: 16px;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
   }
 `;
 
@@ -60,7 +60,7 @@ export default function ScrollToTop() {
   }
 
   return (
-    <Btn $visible={visible} onClick={scrollToTop} aria-label="Scroll to top">
+    <Btn $visible={visible} onClick={scrollToTop} aria-label="Kembali ke bagian paling atas halaman">
       <ArrowUp size={20} weight="bold" />
     </Btn>
   );

@@ -109,8 +109,8 @@ const Controls = styled.div`
 `;
 
 const NavBtn = styled.button`
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   background: ${({ theme }) => theme.colors.surface};
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 50%;
@@ -138,16 +138,20 @@ const Dots = styled.div`
 `;
 
 const Dot = styled.button`
-  width: ${({ $active }) => ($active ? '1.5rem' : '0.5rem')};
+  width: ${({ $active }) => ($active ? '1.5rem' : '0.75rem')};
   height: 0.5rem;
-  background: ${({ $active, theme }) => ($active ? theme.colors.primary : theme.colors.border)};
+  min-width: 44px;
+  min-height: 44px;
+  padding: 18px 0;
+  background-clip: content-box;
+  background-color: ${({ $active, theme }) => ($active ? theme.colors.primary : theme.colors.border)};
   border: none;
   border-radius: 9999px;
   cursor: pointer;
   transition: all 0.35s ease;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
@@ -241,7 +245,7 @@ export default function Testimonials() {
           </ScrollAnimation>
 
           <Controls>
-            <NavBtn onClick={goPrev} aria-label="Previous">
+            <NavBtn onClick={goPrev} aria-label="Testimonial sebelumnya">
               <CaretLeft size={18} weight="bold" />
             </NavBtn>
             <Dots>
@@ -251,12 +255,12 @@ export default function Testimonials() {
                     key={idx}
                     $active={idx === current}
                     onClick={function() { setAutoPlay(false); goTo(idx); }}
-                    aria-label={'Testimonial ' + (idx + 1)}
+                    aria-label={'Pindah ke testimonial ke-' + (idx + 1)}
                   />
                 );
               })}
             </Dots>
-            <NavBtn onClick={goNext} aria-label="Next">
+            <NavBtn onClick={goNext} aria-label="Testimonial selanjutnya">
               <CaretRight size={18} weight="bold" />
             </NavBtn>
           </Controls>

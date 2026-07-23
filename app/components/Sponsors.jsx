@@ -22,9 +22,9 @@ const Section = styled.section`
 
 const Label = styled.p`
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: ${({ theme }) => theme.colors.textMuted};
+  color: ${({ theme }) => theme.colors.textSecondary};
   margin-bottom: 1.5rem;
 `;
 
@@ -76,18 +76,18 @@ const LogoItem = styled.div`
 
 // All images in a single row
 const sponsorImages = [
-  '/foto/pngwing.com.png',
-  '/foto/pngwing.com (1).png',
-  '/foto/pngwing.com (2).png',
-  '/foto/pngwing.com (3).png',
-  '/foto/pngwing.com (4).png',
-  '/foto/pngwing.com (5).png',
-  '/foto/pngwing.com (6).png',
-  '/foto/pngwing.com (7).png',
-  '/foto/pngwing.com (8).png',
-  '/foto/pngwing.com (9).png',
-  '/foto/pngwing.com (10).png',
-  '/foto/pngwing.com (11).png',
+  '/foto/pngwing.com.webp',
+  '/foto/pngwing.com (1).webp',
+  '/foto/pngwing.com (2).webp',
+  '/foto/pngwing.com (3).webp',
+  '/foto/pngwing.com (4).webp',
+  '/foto/pngwing.com (5).webp',
+  '/foto/pngwing.com (6).webp',
+  '/foto/pngwing.com (7).webp',
+  '/foto/pngwing.com (8).webp',
+  '/foto/pngwing.com (9).webp',
+  '/foto/pngwing.com (10).webp',
+  '/foto/pngwing.com (11).webp',
 ];
 
 export default function Sponsors() {
